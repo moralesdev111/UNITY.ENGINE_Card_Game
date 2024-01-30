@@ -15,6 +15,7 @@ MonoBehaviour:
   id: 2
   cardName: Leon
   artwork: {fileID: 450093703, guid: 91ece539279118a438c900dfb08582ed, type: 3}
+  cardBack: {fileID: 2120042908, guid: 71ad172f81917dc4c88b385499ba85c4, type: 3}
   manaCost: 3
   attack: 4
   health: 3

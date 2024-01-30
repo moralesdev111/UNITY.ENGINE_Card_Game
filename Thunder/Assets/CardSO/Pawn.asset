@@ -15,6 +15,7 @@ MonoBehaviour:
   id: 1
   cardName: Pawn
   artwork: {fileID: 1771446180, guid: 91ece539279118a438c900dfb08582ed, type: 3}
+  cardBack: {fileID: 2120042908, guid: 71ad172f81917dc4c88b385499ba85c4, type: 3}
   manaCost: 1
   attack: 1
   health: 1

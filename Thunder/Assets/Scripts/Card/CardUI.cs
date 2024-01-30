@@ -9,6 +9,7 @@ public class CardUI : MonoBehaviour
     [SerializeField] Card card;
     [SerializeField] TextMeshProUGUI cardName;
     [SerializeField] Image artworkImage;
+    [SerializeField] Image cardBack;
     [SerializeField] TextMeshProUGUI manaCost;
     [SerializeField] TextMeshProUGUI attack;
     [SerializeField] TextMeshProUGUI health;
@@ -23,6 +24,7 @@ public class CardUI : MonoBehaviour
     {
         cardName.text = card.cardName;
         artworkImage.sprite = card.artwork;
+        cardBack.sprite = card.cardBack;
         manaCost.text = card.manaCost.ToString();
         attack.text = card.attack.ToString();
         health.text = card.health.ToString();

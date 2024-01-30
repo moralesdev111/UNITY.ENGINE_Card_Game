@@ -9,6 +9,7 @@ public class Card : ScriptableObject
     public int id;
     public string cardName;
     public Sprite artwork;
+    public Sprite cardBack;
     public int manaCost;
     public int attack;
     public int health;
