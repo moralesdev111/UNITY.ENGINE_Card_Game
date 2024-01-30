@@ -12,17 +12,12 @@ public class CardUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI manaCost;
     [SerializeField] TextMeshProUGUI attack;
     [SerializeField] TextMeshProUGUI health;
-    private CardDatabase cardDatabase;
-
+    
 
     private void Awake()
-    {
-        cardDatabase = FindObjectOfType<CardDatabase>();        
+    {  
         SetCardUI();
-        AddCardToDatabase();
     }
-
-    
 
     private void SetCardUI()
     {
@@ -31,10 +26,5 @@ public class CardUI : MonoBehaviour
         manaCost.text = card.manaCost.ToString();
         attack.text = card.attack.ToString();
         health.text = card.health.ToString();
-    }
-
-    private void AddCardToDatabase()
-    {
-        cardDatabase.cardDatabase.Add(card);
     }
 }

@@ -5,12 +5,18 @@ using UnityEngine;
 public class CardDatabase : MonoBehaviour
 {
     public List<Card> cardDatabase = new List<Card>();
-
-    private void Start()
+    
+    public Card GetRandomCard()
     {
-        foreach(Card card in cardDatabase)
+        if(cardDatabase.Count > 0)
         {
-            Debug.Log(card.cardName + " in the database registered");
+            int randomIndex = Random.Range(0,cardDatabase.Count);
+            return cardDatabase[randomIndex];
         }
-    }
+        else
+        {
+            Debug.Log("CardDatabase is empty");
+            return null;
+        }
+    } 
 }
