@@ -779,7 +779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardBack: {fileID: 6937234466955504104}
-  cardBackActive: 0
+  cardBackActive: 1
 --- !u!1 &4713591619278134445
 GameObject:
   m_ObjectHideFlags: 0

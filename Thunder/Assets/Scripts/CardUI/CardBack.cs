@@ -5,7 +5,7 @@ using UnityEngine;
 public class CardBack : MonoBehaviour
 {
     [SerializeField] GameObject cardBack;
-    private bool cardBackActive;
+    [SerializeField] bool cardBackActive;
 
    
     void Update()

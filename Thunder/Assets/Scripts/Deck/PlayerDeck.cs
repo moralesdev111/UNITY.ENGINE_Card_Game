@@ -23,14 +23,15 @@ public class PlayerDeck : MonoBehaviour
     void Start()
     {
         playerDeck = new List<Card>();
-        SetPlayerInitialRandomHand();
+        SetPlayerInitialRandomDeck();
     }
 
-    void Update(){
+    void Update()
+    {
         UpdateCurrentDeckSize();
     }
 
-    private void SetPlayerInitialRandomHand()
+    private void SetPlayerInitialRandomDeck()
     {
         for (int i = 0; i < DeckSizeLimit; i++)
         {
@@ -38,7 +39,7 @@ public class PlayerDeck : MonoBehaviour
 
             if (randomCard != null)
             {
-                playerDeck.Add(randomCard);
+                playerDeck.Add(randomCard);                
             }
             else
             {
