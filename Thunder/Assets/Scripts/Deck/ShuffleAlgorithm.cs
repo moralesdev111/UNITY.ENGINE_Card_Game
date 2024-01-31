@@ -8,18 +8,19 @@ public class ShuffleAlgorithm : MonoBehaviour
 
     public void ShuffleDeck()
     {
-        for(int i = 0; i < playerDeck.deckSizeLimit; i++)
+        Debug.Log("Shuffle Completed");
+        for(int i = 0; i < playerDeck.CurrentDeckSize; i++)
         {
-            int randomIndex = Random.Range(i,playerDeck.deckSizeLimit);
+            int randomIndex = Random.Range(i, playerDeck.CurrentDeckSize);
             SwapCards(i,randomIndex);            
         }
     }
 
     private void SwapCards(int indexA, int indexB)
     {
-        Card temporaryCard = playerDeck.playerDeck[indexA];
+        Card temporaryCard = playerDeck.PlayerDeckList[indexA];
 
-        playerDeck.playerDeck[indexA] = playerDeck.playerDeck[indexB];
-        playerDeck.playerDeck[indexB] = temporaryCard;
+        playerDeck.PlayerDeckList[indexA] = playerDeck.PlayerDeckList[indexB];
+        playerDeck.PlayerDeckList[indexB] = temporaryCard;
     }
 }

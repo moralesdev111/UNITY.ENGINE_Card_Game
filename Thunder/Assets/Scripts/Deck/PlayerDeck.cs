@@ -1,36 +1,42 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections.Generic;
 
 
 public class PlayerDeck : MonoBehaviour
 {
-    public Card[] playerDeck;
     [SerializeField] CardDatabase cardDatabase;
-    public int deckSizeLimit = 15;
-   
-
+    public int DeckSizeLimit { get; private set; } = 15;
+    public int CurrentDeckSize 
+    {
+        get{return PlayerDeckList.Count;}
+    }
+    private List<Card> playerDeck;
+    public List<Card> PlayerDeckList
+    {
+        get { return playerDeck; }
+    }
 
     void Start()
     {
-        playerDeck = new Card[deckSizeLimit];
+        playerDeck = new List<Card>();
         SetPlayerInitialRandomHand();
     }
 
-    private Card[] SetPlayerInitialRandomHand()
+    private void SetPlayerInitialRandomHand()
     {
-       for(int i = 0; i < deckSizeLimit; i++)
-       {
-        Card randomCard = cardDatabase.GetRandomCard();
+        for (int i = 0; i < DeckSizeLimit; i++)
+        {
+            Card randomCard = cardDatabase.GetRandomCard();
 
-        if(randomCard!= null)
-        {
-            playerDeck[i] = randomCard;
+            if (randomCard != null)
+            {
+                playerDeck.Add(randomCard);
+            }
+            else
+            {
+                Debug.LogWarning("Unable to get a random card from the database.");
+            }
         }
-        else
-        {
-            Debug.LogWarning("Unable to get a random card from the database.");
-        }        
-       }
-       return playerDeck;
-    } 
+    }
 }
