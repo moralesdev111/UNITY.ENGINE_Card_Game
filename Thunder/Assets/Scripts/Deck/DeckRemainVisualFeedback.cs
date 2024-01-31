@@ -5,10 +5,10 @@ using UnityEngine;
 public class DeckRemainVisualFeedback : MonoBehaviour
 {
     [SerializeField] PlayerDeck playerDeck;
-    public GameObject cardInpile;
-    public GameObject cardInpile2;
-    public GameObject cardInpile3;
-    public GameObject cardInpile4;
+    [SerializeField] GameObject cardInpile;
+    [SerializeField] GameObject cardInpile2;
+    [SerializeField] GameObject cardInpile3;
+    [SerializeField] GameObject cardInpile4;
 
 
     void Update()
@@ -16,22 +16,42 @@ public class DeckRemainVisualFeedback : MonoBehaviour
         VisualFeedBack();
     }
     private void VisualFeedBack()
+{
+    if (playerDeck.CurrentDeckSize < 15)
     {
-        if(playerDeck.CurrentDeckSize < 15)
-        {
-            cardInpile.SetActive(false);
-        }
-        if(playerDeck.CurrentDeckSize < 10)
-        {
-            cardInpile2.SetActive(false);
-        }
-        if(playerDeck.CurrentDeckSize < 5)
-        {
-            cardInpile3.SetActive(false);
-        }
-        if(playerDeck.CurrentDeckSize < 1)
-        {
-            cardInpile4.SetActive(false);
-        }
+        cardInpile.SetActive(false);
     }
+    else
+    {
+        cardInpile.SetActive(true);
+    }
+
+    if (playerDeck.CurrentDeckSize < 10)
+    {
+        cardInpile2.SetActive(false);
+    }
+    else
+    {
+        cardInpile2.SetActive(true);
+    }
+
+    if (playerDeck.CurrentDeckSize < 5)
+    {
+        cardInpile3.SetActive(false);
+    }
+    else
+    {
+        cardInpile3.SetActive(true);
+    }
+
+    if (playerDeck.CurrentDeckSize < 1)
+    {
+        cardInpile4.SetActive(false);
+    }
+    else
+    {
+        cardInpile4.SetActive(true);
+    }
+}
+
 }

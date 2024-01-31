@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CardBack : MonoBehaviour
 {
-    public GameObject cardBack;
-    public bool cardBackActive;
+    [SerializeField] GameObject cardBack;
+    private bool cardBackActive;
 
    
     void Update()

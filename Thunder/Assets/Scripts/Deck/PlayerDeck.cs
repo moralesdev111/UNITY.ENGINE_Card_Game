@@ -6,10 +6,13 @@ using System.Collections.Generic;
 public class PlayerDeck : MonoBehaviour
 {
     [SerializeField] CardDatabase cardDatabase;
+    [SerializeField] private int currentDeckSize;
     public int DeckSizeLimit { get; private set; } = 15;
+    
     public int CurrentDeckSize 
     {
         get{return PlayerDeckList.Count;}
+        private set{currentDeckSize = value;}
     }
     private List<Card> playerDeck;
     public List<Card> PlayerDeckList
@@ -21,6 +24,10 @@ public class PlayerDeck : MonoBehaviour
     {
         playerDeck = new List<Card>();
         SetPlayerInitialRandomHand();
+    }
+
+    void Update(){
+        UpdateCurrentDeckSize();
     }
 
     private void SetPlayerInitialRandomHand()
@@ -38,5 +45,10 @@ public class PlayerDeck : MonoBehaviour
                 Debug.LogWarning("Unable to get a random card from the database.");
             }
         }
+    }
+
+    private void UpdateCurrentDeckSize()
+    {
+        currentDeckSize = PlayerDeckList.Count;
     }
 }
