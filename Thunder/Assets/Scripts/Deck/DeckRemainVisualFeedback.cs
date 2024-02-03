@@ -18,7 +18,7 @@ public class DeckRemainVisualFeedback : MonoBehaviour
 
     private void VisualFeedback()
     {
-        if (playerDeck.CurrentDeckSize < 15)
+        if (playerDeck.CurrentSize < 15)
         {
             cardInpileImage.enabled = false;
         }
@@ -27,7 +27,7 @@ public class DeckRemainVisualFeedback : MonoBehaviour
             cardInpileImage.enabled = true;
         }
 
-        if (playerDeck.CurrentDeckSize < 10)
+        if (playerDeck.CurrentSize < 10)
         {            
             cardInpile2Image.enabled = false;
         }
@@ -36,7 +36,7 @@ public class DeckRemainVisualFeedback : MonoBehaviour
             cardInpile2Image.enabled = true;
         }
 
-        if (playerDeck.CurrentDeckSize < 5)
+        if (playerDeck.CurrentSize < 5)
         {         
             cardInpile3Image.enabled = false;
         }
@@ -45,7 +45,7 @@ public class DeckRemainVisualFeedback : MonoBehaviour
             cardInpile3Image.enabled = true;
         }
 
-        if (playerDeck.CurrentDeckSize < 1)
+        if (playerDeck.CurrentSize < 1)
         {     
             cardInpile4Image.enabled = false;
         }

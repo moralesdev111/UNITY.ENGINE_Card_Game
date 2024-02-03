@@ -3,27 +3,14 @@ using UnityEngine;
 using System.Collections.Generic;
 
 
-public class PlayerDeck : MonoBehaviour
+public class PlayerDeck : HandContainer
 {
-    [SerializeField] CardDatabase cardDatabase;
-    [SerializeField] private int currentDeckSize;
-    public int DeckSizeLimit { get; private set; } = 15;
-    
-    public int CurrentDeckSize 
-    {
-        get{return PlayerDeckList.Count;}
-        private set{currentDeckSize = value;}
-    }
-    private List<Card> playerDeck;
-    public List<Card> PlayerDeckList
-    {
-        get { return playerDeck; }
-    }
+   [SerializeField] CardDatabase cardDatabase;
 
     void Start()
     {
-        playerDeck = new List<Card>();
-        SetPlayerInitialRandomDeck();
+        container = new List<Card>();
+        RandomizeContainer();
     }
 
     void Update()
@@ -31,15 +18,15 @@ public class PlayerDeck : MonoBehaviour
         UpdateCurrentDeckSize();
     }
 
-    private void SetPlayerInitialRandomDeck()
+    public override void RandomizeContainer()
     {
-        for (int i = 0; i < DeckSizeLimit; i++)
+        for (int i = 0; i < ContainerSizeLimit; i++)
         {
             Card randomCard = cardDatabase.GetRandomCard();
 
             if (randomCard != null)
             {
-                playerDeck.Add(randomCard);                
+                Container.Add(randomCard);                
             }
             else
             {
@@ -50,6 +37,6 @@ public class PlayerDeck : MonoBehaviour
 
     private void UpdateCurrentDeckSize()
     {
-        currentDeckSize = PlayerDeckList.Count;
+        CurrentSize = Container.Count;
     }
 }

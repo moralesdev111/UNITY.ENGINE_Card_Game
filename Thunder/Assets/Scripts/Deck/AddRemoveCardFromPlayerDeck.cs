@@ -11,10 +11,10 @@ public class AddRemoveCardFromPlayerDeck : MonoBehaviour
 
     public void RemoveCard()
     {
-        if(playerDeck.PlayerDeckList.Count >= 1)
+        if(playerDeck.Container.Count > 0)
         {
             Debug.Log("1 card removed");
-        playerDeck.PlayerDeckList.RemoveAt(2);
+        playerDeck.Container.RemoveAt(0);
         }
         else
         {
@@ -25,10 +25,10 @@ public class AddRemoveCardFromPlayerDeck : MonoBehaviour
     }
     public void AddCard()
     {
-        if(playerDeck.PlayerDeckList.Count < playerDeck.DeckSizeLimit)
+        if(playerDeck.Container.Count < playerDeck.ContainerSizeLimit)
         {
              Debug.Log("1 card added");
-        playerDeck.PlayerDeckList.Add(cardDatabase.GetRandomCard());
+        playerDeck.Container.Add(cardDatabase.GetRandomCard());
         }
         else{
             Debug.Log("Cant add more cards");

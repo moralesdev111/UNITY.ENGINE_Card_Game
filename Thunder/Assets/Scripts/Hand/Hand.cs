@@ -2,27 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hand : MonoBehaviour
+public class Hand : HandContainer
 {
     [SerializeField] CardDatabase cardDatabase;
-     [SerializeField] private int currentHandSize;
-    public int HandSizeLimit {get;private set;} = 3;
-    public int CurrentHandSize 
-    {
-        get{return playerHand.Count;}
-        private set{currentHandSize = value;}
-    }
-    private List<Card> playerHand;
-    public List<Card> PlayerHandList
-    {
-        get{return playerHand;}
-    }
     
 
     void Start()
     {
-        playerHand = new List<Card>();
-        SetPlayerInitialRandomHand();
+        container = new List<Card>();
+        RandomizeContainer();
     }
 
     void Update()
@@ -30,14 +18,14 @@ public class Hand : MonoBehaviour
          UpdateCurrentHandSize();
     }
 
-    private void SetPlayerInitialRandomHand()
+    public override void RandomizeContainer()
     {
-        for(int i = 0; i < HandSizeLimit; i++)
+        for(int i = 0; i < ContainerSizeLimit; i++)
         {
             Card randomCard = cardDatabase.GetRandomCard();
             if(randomCard != null)
             {
-                playerHand.Add(randomCard);
+                container.Add(randomCard);
                 Debug.Log(randomCard.name);
             }
             else
@@ -50,6 +38,6 @@ public class Hand : MonoBehaviour
 
     private void UpdateCurrentHandSize()
     {
-        currentHandSize = PlayerHandList.Count;
+        CurrentSize = Container.Count;
     }
 }
