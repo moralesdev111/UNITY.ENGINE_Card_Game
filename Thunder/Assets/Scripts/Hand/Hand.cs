@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hand : HandContainer
+public class Hand : SlotContainer
 {
     [SerializeField] CardDatabase cardDatabase;
     
 
     void Start()
     {
+        ContainerSizeLimit = 3;
         container = new List<Card>();
         RandomizeContainer();
     }

@@ -3,12 +3,13 @@ using UnityEngine;
 using System.Collections.Generic;
 
 
-public class PlayerDeck : HandContainer
+public class PlayerDeck : SlotContainer
 {
    [SerializeField] CardDatabase cardDatabase;
 
     void Start()
     {
+        ContainerSizeLimit = 15;
         container = new List<Card>();
         RandomizeContainer();
     }
