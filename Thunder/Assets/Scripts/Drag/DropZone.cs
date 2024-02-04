@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
      [SerializeField] Hand hand;
+     [SerializeField] Transform battlefieldParent;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -48,13 +49,21 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
                 // Card moved from the battlefield to the hand
                 hand.Container.Remove(drag.GetComponent<CardUI>().card);
             }
-            else if(this.gameObject.CompareTag("Hand")){
-                hand.Container.Add(drag.GetComponent<CardUI>().card);
+             else if(this.gameObject.CompareTag("Hand"))
+            {
+                if(hand.CurrentSize < hand.ContainerSizeLimit)
+                {
+                    hand.Container.Add(drag.GetComponent<CardUI>().card);
+                }
+                else
+                {
+                    drag.defaultParent = battlefieldParent;
+                    return;
+                }
             }
         }
     }
-
-
+}
 }
 
-}
+
