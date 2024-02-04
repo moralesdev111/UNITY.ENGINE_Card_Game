@@ -649,6 +649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSize: 0
+  drawCard: {fileID: 11400000, guid: 145060b68457ad64eb4677cdbf6d9621, type: 2}
   cardDatabase: {fileID: 1762329837}
 --- !u!4 &326385851
 Transform:
@@ -691,6 +692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDeck: {fileID: 326385850}
+  drawCard: {fileID: 11400000, guid: 145060b68457ad64eb4677cdbf6d9621, type: 2}
   cardDatabase: {fileID: 1762329837}
 --- !u!1 &349616167
 GameObject:
@@ -1690,8 +1692,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSize: 0
-  cardDatabase: {fileID: 1762329837}
+  playerDeck: {fileID: 326385850}
   drawToHand: {fileID: 646918184}
+  drawCard: {fileID: 11400000, guid: 145060b68457ad64eb4677cdbf6d9621, type: 2}
 --- !u!114 &646918184
 MonoBehaviour:
   m_ObjectHideFlags: 0

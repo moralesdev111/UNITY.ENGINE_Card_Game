@@ -5,8 +5,9 @@ using UnityEngine;
 public class Hand : SlotContainer, IUncoverCardeable
 {
     [Header("References")]
-    [SerializeField] CardDatabase cardDatabase;
+    [SerializeField] PlayerDeck playerDeck;
     [SerializeField] DrawToHand drawToHand;
+    [SerializeField] DrawCard drawCard;
    
 
     void Start()
@@ -26,7 +27,7 @@ public class Hand : SlotContainer, IUncoverCardeable
     {
         for (int i = 0; i < ContainerSizeLimit; i++)
         {
-            Card randomCard = cardDatabase.GetRandomCard();
+            Card randomCard = drawCard.DrawRandomCard(playerDeck.Container);
             if (randomCard != null)
             {
                 GameObject newCardObject = drawToHand.InstantiateInHand();

@@ -6,9 +6,10 @@ using System.Collections.Generic;
 public class PlayerDeck : SlotContainer
 {
     [Header("References")]
+   [SerializeField] DrawCard drawCard;
    [SerializeField] CardDatabase cardDatabase;
 
-    void Start()
+    void Awake()
     {
         ContainerSizeLimit = 15;
         container = new List<Card>();
@@ -24,7 +25,7 @@ public class PlayerDeck : SlotContainer
     {
         for (int i = 0; i < ContainerSizeLimit; i++)
         {
-            Card randomCard = cardDatabase.GetRandomCard();
+            Card randomCard = drawCard.DrawRandomCard(cardDatabase.cardDatabase);
 
             if (randomCard != null)
             {

@@ -6,6 +6,7 @@ public class AddRemoveCardFromPlayerDeck : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] PlayerDeck playerDeck;
+    [SerializeField] DrawCard drawCard;
     [SerializeField] CardDatabase cardDatabase;
 
     
@@ -28,10 +29,11 @@ public class AddRemoveCardFromPlayerDeck : MonoBehaviour
     {
         if(playerDeck.Container.Count < playerDeck.ContainerSizeLimit)
         {
-             Debug.Log("1 card added");
-        playerDeck.Container.Add(cardDatabase.GetRandomCard());
+            Debug.Log("1 card added");
+            playerDeck.Container.Add(drawCard.DrawRandomCard(cardDatabase.cardDatabase));
         }
-        else{
+        else
+        {
             Debug.Log("Cant add more cards");
             return;
         }
