@@ -723,6 +723,8 @@ GameObject:
   - component: {fileID: 1563915504473239850}
   - component: {fileID: 1491761932805755313}
   - component: {fileID: 3813271616942789651}
+  - component: {fileID: -3876546491806128437}
+  - component: {fileID: 370278883149272522}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -795,6 +797,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 609acb47b84faf14cb45d1fde6187405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  createPlaceHolder: {fileID: -3876546491806128437}
+  setSiblingIndex: {fileID: 370278883149272522}
   defaultParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
 --- !u!225 &1491761932805755313
@@ -829,6 +833,33 @@ MonoBehaviour:
   m_FlexibleWidth: 0
   m_FlexibleHeight: 0
   m_LayoutPriority: 1
+--- !u!114 &-3876546491806128437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4651366815562492899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d33d493bec824542839eee31288620d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placeHolder: {fileID: 0}
+--- !u!114 &370278883149272522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4651366815562492899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e55a469d36b27ff4d9b051afb2bac488, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drag: {fileID: 1563915504473239850}
+  createPlaceHolder: {fileID: -3876546491806128437}
 --- !u!1 &4713591619278134445
 GameObject:
   m_ObjectHideFlags: 0
