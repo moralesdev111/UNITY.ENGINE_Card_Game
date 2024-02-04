@@ -2576,13 +2576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90078dbca68541f4bb12f15267bf122a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayerTurn: 0
-  playerTurn: 0
-  opponentTurn: 0
-  maxMana: 0
-  currentMana: 0
   turnState: {fileID: 1357867413}
-  manaText: {fileID: 877428798}
   turnActions: {fileID: 1357867414}
 --- !u!4 &1357867412
 Transform:
@@ -2624,10 +2618,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61ecb4cc0e8247349b92762d5401a314, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerTurn: 0
+  playerTurn: 0
+  opponentTurn: 0
+  maxMana: 0
+  currentMana: 0
+  startTurn: 0
   turnState: {fileID: 1357867413}
-  turnSystem: {fileID: 1357867411}
   turnText: {fileID: 1373280520}
-  turnManager: {fileID: 1357867411}
+  manaText: {fileID: 877428798}
+  drawCard: {fileID: 11400000, guid: 145060b68457ad64eb4677cdbf6d9621, type: 2}
+  drawToHand: {fileID: 646918184}
+  playerDeck: {fileID: 326385850}
+  hand: {fileID: 646918183}
 --- !u!1 &1373280518
 GameObject:
   m_ObjectHideFlags: 0

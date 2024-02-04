@@ -7,7 +7,7 @@ public class DrawToHand : MonoBehaviour
     [SerializeField] GameObject cardPrefab;
     [SerializeField] Transform parent;
 
-    public GameObject InstantiateInHand()
+    public GameObject VisualInstantiateInHand()
     {
         GameObject newCard = Instantiate(cardPrefab, parent);
         newCard.transform.SetParent(parent);

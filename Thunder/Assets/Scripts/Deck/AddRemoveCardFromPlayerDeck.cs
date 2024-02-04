@@ -30,7 +30,7 @@ public class AddRemoveCardFromPlayerDeck : MonoBehaviour
         if(playerDeck.Container.Count < playerDeck.ContainerSizeLimit)
         {
             Debug.Log("1 card added");
-            playerDeck.Container.Add(drawCard.DrawRandomCard(cardDatabase.cardDatabase));
+            playerDeck.Container.Add(drawCard.DrawOneRandomCard(cardDatabase.cardDatabase));
         }
         else
         {

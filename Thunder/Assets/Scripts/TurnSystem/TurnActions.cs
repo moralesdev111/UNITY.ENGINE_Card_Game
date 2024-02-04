@@ -1,23 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using TMPro;
 
 public class TurnActions : MonoBehaviour
 {
+    public bool isPlayerTurn;
+    public int playerTurn;
+    public int opponentTurn;
+    public int maxMana;
+    public int currentMana;
+    public bool startTurn = false;
     [Header("References")]
     [SerializeField] TurnState turnState;
-    [SerializeField] TurnManager turnSystem;
     [SerializeField] TextMeshProUGUI turnText;
-    [SerializeField] TurnManager turnManager;
-    
+    [SerializeField] TextMeshProUGUI manaText;
+    [SerializeField] DrawCard drawCard;
+    [SerializeField] DrawToHand drawToHand;
+    [SerializeField] PlayerDeck playerDeck;
+    [SerializeField] Hand hand;
 
     void Update()
     {
-        Actions();
+        manaText.text = currentMana + " / " + maxMana;
     }
 
-   private void Actions()
+   public void Actions()
     {
         if(turnState.currentTurnState == TurnState.TurnStates.playerTurn)
             {
@@ -29,22 +36,37 @@ public class TurnActions : MonoBehaviour
             }
     }
 
-    public void End(bool turnOwner)
+    public void End(bool opponentTurn)
     {
-        if(turnOwner)
+        if(opponentTurn)
         {
-            turnManager.isPlayerTurn = false;
-            turnManager.opponentTurn += 1;
+            isPlayerTurn = false;
+            this.opponentTurn += 1;
+            startTurn = false;
             turnState.currentTurnState = TurnState.TurnStates.opponentTurn;
         }
         else
         {
-            turnManager.isPlayerTurn = true;
-            turnManager.playerTurn += 1;
+            isPlayerTurn = true;
+            playerTurn += 1;
 
-            turnManager.maxMana+= 1;
-            turnManager.currentMana = turnManager.maxMana;
+            maxMana+= 1;
+            currentMana = maxMana;
+            startTurn = true;
+            
+            hand.StartDrawProcess();
+
             turnState.currentTurnState = TurnState.TurnStates.playerTurn;
         }
+    }
+
+    public void InitialTurnSettings()
+    {
+        isPlayerTurn = true;
+        playerTurn = 1;
+        opponentTurn = 0;
+       
+        maxMana = 1;
+        currentMana = 1;
     }
 }

@@ -12,42 +12,50 @@ public class Hand : SlotContainer, IUncoverCardeable
 
     void Start()
     {
-        ContainerSizeLimit = 3;
+        ContainerSizeLimit = 5;
         container = new List<Card>();
         RandomizeContainer();
-        UncoverCards();
+        
     }
 
     void Update()
     {
         UpdateCurrentHandSize();
+        UncoverCards();
     }
 
    public override void RandomizeContainer()
     {
-        for (int i = 0; i < ContainerSizeLimit; i++)
+        for (int i = 0; i < 3; i++)
         {
-            Card randomCard = drawCard.DrawRandomCard(playerDeck.Container);
-            if (randomCard != null)
-            {
-                GameObject newCardObject = drawToHand.InstantiateInHand();
-                CardUI randomizedCardUI = newCardObject.GetComponent<CardUI>();
-                randomizedCardUI.card = randomCard;
-
-                container.Add(randomCard);
-            }
-            else
-            {
-                Debug.LogWarning("Unable to get a random card from the database.");
-            }
+            StartDrawProcess();
         }
     }
 
+    public void StartDrawProcess()
+    {
+        if(CurrentSize < ContainerSizeLimit)
+        {
+            Card randomCard = drawCard.DrawOneRandomCard(playerDeck.Container);
+        if (randomCard != null)
+        {
+            GameObject newCardObject = drawToHand.VisualInstantiateInHand();
+            CardUI randomizedCardUI = newCardObject.GetComponent<CardUI>();
+            randomizedCardUI.card = randomCard;
 
+            container.Add(randomCard);
+        }
+        else
+        {
+            Debug.LogWarning("Unable to get a random card from the database.");
+        }
+        }
+        
+    }
 
     public void UncoverCards()
     {
-        for(int i = 0; i < 3; i++)
+        for(int i = 0; i < CurrentSize; i++)
         {
             Transform child = transform.GetChild(i);
             child.GetComponent<CardBack>().UncoverCards();
@@ -55,7 +63,7 @@ public class Hand : SlotContainer, IUncoverCardeable
     }
 
 
-    private void UpdateCurrentHandSize()
+    public void UpdateCurrentHandSize()
     {
         CurrentSize = Container.Count;
     }
