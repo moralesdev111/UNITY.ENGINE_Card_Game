@@ -2010,7 +2010,7 @@ GameObject:
   - component: {fileID: 646918185}
   m_Layer: 5
   m_Name: Hand
-  m_TagString: Untagged
+  m_TagString: Hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3722,7 +3722,7 @@ GameObject:
   - component: {fileID: 1571123828}
   m_Layer: 5
   m_Name: Battlefield
-  m_TagString: Untagged
+  m_TagString: Battlefield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3819,7 +3819,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1571123823}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d0d59a81bc1bfa4a8d463bd2f8824d0, type: 3}
+  m_Script: {fileID: 11500000, guid: b599e27dec32c1b4da7fef56b84ee236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hand: {fileID: 646918183}
