@@ -15,13 +15,13 @@ public class Hand : SlotContainer, IUncoverCardeable
         ContainerSizeLimit = 5;
         container = new List<Card>();
         RandomizeContainer();
+        UncoverCard();
         
     }
 
     void Update()
     {
         UpdateCurrentHandSize();
-        UncoverCards();
     }
 
    public override void RandomizeContainer()
@@ -39,7 +39,11 @@ public class Hand : SlotContainer, IUncoverCardeable
             Card randomCard = drawCard.DrawOneRandomCard(playerDeck.Container);
         if (randomCard != null)
         {
+            
+          
             GameObject newCardObject = drawToHand.VisualInstantiateInHand();
+            CardBack randomizedCardBack = newCardObject.GetComponent<CardBack>();
+            randomizedCardBack.UncoverCard();
             CardUI randomizedCardUI = newCardObject.GetComponent<CardUI>();
             randomizedCardUI.card = randomCard;
 
@@ -53,12 +57,12 @@ public class Hand : SlotContainer, IUncoverCardeable
         
     }
 
-    public void UncoverCards()
+    public void UncoverCard()
     {
         for(int i = 0; i < CurrentSize; i++)
         {
             Transform child = transform.GetChild(i);
-            child.GetComponent<CardBack>().UncoverCards();
+            child.GetComponent<CardBack>().UncoverCard();
         }
     }
 

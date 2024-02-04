@@ -26,7 +26,7 @@ public class CardBack : MonoBehaviour, IUncoverCardeable
         }
     }
 
-    public void UncoverCards()
+    public void UncoverCard()
     {
         cardBackActive = false;
     }

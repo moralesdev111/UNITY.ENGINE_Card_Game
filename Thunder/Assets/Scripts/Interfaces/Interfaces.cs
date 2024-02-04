@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IUncoverCardeable 
 {
-   void UncoverCards();
+   void UncoverCard();
 }
