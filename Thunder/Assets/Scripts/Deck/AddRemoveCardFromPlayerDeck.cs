@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AddRemoveCardFromPlayerDeck : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] PlayerDeck playerDeck;
     [SerializeField] CardDatabase cardDatabase;
 

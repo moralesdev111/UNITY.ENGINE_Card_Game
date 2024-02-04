@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardBack : MonoBehaviour
+public class CardBack : MonoBehaviour, IUncoverCardeable
 {
+    [Header("References")]
     [SerializeField] GameObject cardBack;
     [SerializeField] bool cardBackActive;
 
@@ -23,5 +24,10 @@ public class CardBack : MonoBehaviour
         {
             cardBack.SetActive(false);
         }
+    }
+
+    public void UncoverCards()
+    {
+        cardBackActive = false;
     }
 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class PlayerDeck : SlotContainer
 {
+    [Header("References")]
    [SerializeField] CardDatabase cardDatabase;
 
     void Start()

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShuffleAlgorithm : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] PlayerDeck playerDeck;
 
     public void ShuffleDeck()

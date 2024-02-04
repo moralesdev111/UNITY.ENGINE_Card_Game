@@ -6,21 +6,30 @@ using UnityEngine.UI;
 
 public class CardUI : MonoBehaviour
 {
-    [SerializeField] Card card;
+    public Card card;
+    [Header("References")]
     [SerializeField] TextMeshProUGUI cardName;
     [SerializeField] Image artworkImage;
     [SerializeField] Image cardBack;
     [SerializeField] TextMeshProUGUI manaCost;
     [SerializeField] TextMeshProUGUI attack;
     [SerializeField] TextMeshProUGUI health;
-    
+    private bool isInitialized = false;
 
-    private void Awake()
-    {  
-        SetCardUI();
+    private void Start()
+    {
+        if (isInitialized)
+        {
+            return; 
+        }
+        if (card != null)
+        {
+            SetCardUI();
+            isInitialized = true;
+        }
     }
 
-    private void SetCardUI()
+    public void SetCardUI()
     {
         cardName.text = card.cardName;
         artworkImage.sprite = card.artwork;
