@@ -2553,8 +2553,9 @@ GameObject:
   - component: {fileID: 1357867412}
   - component: {fileID: 1357867411}
   - component: {fileID: 1357867413}
+  - component: {fileID: 1357867414}
   m_Layer: 0
-  m_Name: TurnSystem
+  m_Name: TurnManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2578,8 +2579,8 @@ MonoBehaviour:
   maxMana: 0
   currentMana: 0
   turnState: {fileID: 1357867413}
-  turnText: {fileID: 1373280520}
   manaText: {fileID: 877428798}
+  turnActions: {fileID: 1357867414}
 --- !u!4 &1357867412
 Transform:
   m_ObjectHideFlags: 0
@@ -2608,6 +2609,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentTurnState: 0
+--- !u!114 &1357867414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357867410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ecb4cc0e8247349b92762d5401a314, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnState: {fileID: 1357867413}
+  turnSystem: {fileID: 1357867411}
+  turnText: {fileID: 1373280520}
+  turnManager: {fileID: 1357867411}
 --- !u!1 &1373280518
 GameObject:
   m_ObjectHideFlags: 0

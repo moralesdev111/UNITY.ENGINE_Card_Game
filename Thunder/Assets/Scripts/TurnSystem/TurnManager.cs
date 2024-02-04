@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class TurnSystem : MonoBehaviour
+public class TurnManager : MonoBehaviour
 {
     public bool isPlayerTurn;
     public int playerTurn;
@@ -12,8 +12,8 @@ public class TurnSystem : MonoBehaviour
     public int maxMana;
     public int currentMana;
     [SerializeField] TurnState turnState;
-    [SerializeField] TextMeshProUGUI turnText;
     [SerializeField] TextMeshProUGUI manaText;
+    [SerializeField] TurnActions turnActions;
 
     void Start()
     {
@@ -27,15 +27,7 @@ public class TurnSystem : MonoBehaviour
     }
 
     void Update()
-    {
-        if(isPlayerTurn)
-        {
-            turnText.text = "Player Turn";
-        }
-        else
-        {
-            turnText.text = "Opponent Turn";
-        }
+    { 
         manaText.text = currentMana + " / " + maxMana;
     }
 
@@ -43,25 +35,15 @@ public class TurnSystem : MonoBehaviour
     {
         if(isPlayerTurn)
         {
-            isPlayerTurn = false;
-            opponentTurn += 1;
-            turnState.currentTurnState = TurnState.TurnStates.opponentTurn;
+           turnActions.End(true);
         }
-
-       
     }
 
     public void EndOpponentTurn()
     {
         if(!isPlayerTurn)
         {
-            isPlayerTurn = true;
-            playerTurn += 1;
-
-            maxMana+= 1;
-            currentMana = maxMana;
-            turnState.currentTurnState = TurnState.TurnStates.playerTurn;
+            turnActions.End(false);
         }
-       
     }
 }
