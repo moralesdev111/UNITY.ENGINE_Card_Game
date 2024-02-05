@@ -8,7 +8,6 @@ public class Hand : SlotContainer, IUncoverCardeable
     [SerializeField] PlayerDeck playerDeck;
     [SerializeField] DrawToHand drawToHand;
     [SerializeField] DrawCard drawCard;
-   
 
     void Start()
     {
@@ -16,15 +15,15 @@ public class Hand : SlotContainer, IUncoverCardeable
         container = new List<Card>();
         RandomizeContainer();
         UncoverCard();
-        
     }
 
     void Update()
     {
         UpdateCurrentHandSize();
+        SetHandState();
     }
 
-   public override void RandomizeContainer()
+    public override void RandomizeContainer()
     {
         for (int i = 0; i < 3; i++)
         {
@@ -34,41 +33,53 @@ public class Hand : SlotContainer, IUncoverCardeable
 
     public void StartDrawProcess()
     {
-        if(CurrentSize < ContainerSizeLimit)
+        if (CurrentSize < ContainerSizeLimit)
         {
             Card randomCard = drawCard.DrawOneRandomCard(playerDeck.Container);
-        if (randomCard != null)
-        {
-            
-            randomCard.cardState = Card.CardState.hand;
-            GameObject newCardObject = drawToHand.VisualInstantiateInHand();
-            CardBack randomizedCardBack = newCardObject.GetComponent<CardBack>();
-            randomizedCardBack.UncoverCard();
-            CardInstance randomizedCardUI = newCardObject.GetComponent<CardInstance>();
-            randomizedCardUI.card = randomCard;
+            if (randomCard != null)
+            {
+                GameObject newCardObject = drawToHand.VisualInstantiateInHand();
+                CardBack randomizedCardBack = newCardObject.GetComponent<CardBack>();
+                randomizedCardBack.UncoverCard();
+                CardInstance cardInstance = newCardObject.GetComponent<CardInstance>();
+                cardInstance.card = randomCard;
 
-            container.Add(randomCard);
+                container.Add(randomCard);
+            }
+            else
+            {
+                Debug.LogWarning("Unable to get a random card from the database.");
+            }
         }
-        else
-        {
-            Debug.LogWarning("Unable to get a random card from the database.");
-        }
-        }
-        
     }
 
     public void UncoverCard()
     {
-        for(int i = 0; i < CurrentSize; i++)
+        for (int i = 0; i < CurrentSize; i++)
         {
             Transform child = transform.GetChild(i);
             child.GetComponent<CardBack>().UncoverCard();
         }
     }
 
-
     public void UpdateCurrentHandSize()
     {
         CurrentSize = Container.Count;
+    }
+
+    private void SetHandState()
+    {
+        foreach (Transform childTransform in transform)
+        {
+            CardInstance cardInstance = childTransform.GetComponent<CardInstance>();
+            if (cardInstance != null)
+            {
+                cardInstance.currentCardState = CardInstance.CardState.hand;
+            }
+            else
+            {
+                return;
+            }
+        }
     }
 }

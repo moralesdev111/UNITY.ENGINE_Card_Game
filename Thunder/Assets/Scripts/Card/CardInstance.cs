@@ -16,8 +16,19 @@ public class CardInstance : MonoBehaviour
     [SerializeField] TextMeshProUGUI health;
     private bool isInitialized = false;
 
+        public enum CardState
+    {
+        deck,
+        hand,
+        battlefield,
+        discard
+    }
+     public CardState currentCardState;
+
     private void Start()
     {
+        this.name = card.cardName;
+        currentCardState = CardState.deck;
         if (isInitialized)
         {
             return; 

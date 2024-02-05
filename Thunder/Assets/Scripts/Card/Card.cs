@@ -12,13 +12,4 @@ public class Card : ScriptableObject
     public int manaCost;
     public int attack;
     public int health;
-
-    public enum CardState
-    {
-        deck,
-        hand,
-        battlefield,
-        discard
-    }
-     public CardState cardState;
 }

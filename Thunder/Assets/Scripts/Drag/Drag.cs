@@ -17,8 +17,8 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     public void OnBeginDrag(PointerEventData eventData)
     {
         GetCardDetails();
-        //check if instantiated card currentstate is battlefield
-        if (manaManager.GreenLight(cardDetails.card))
+        
+        if (manaManager.GreenLight(cardDetails.card) && cardDetails.currentCardState != CardInstance.CardState.battlefield)
         {
             canDrag = true;
             placeHolder.CreatePlaceHolderObject();

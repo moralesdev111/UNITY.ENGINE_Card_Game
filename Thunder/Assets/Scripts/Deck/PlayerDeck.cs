@@ -29,7 +29,6 @@ public class PlayerDeck : SlotContainer
 
             if (randomCard != null)
             {
-                randomCard.cardState = Card.CardState.deck;
                 Container.Add(randomCard);                
             }
             else
