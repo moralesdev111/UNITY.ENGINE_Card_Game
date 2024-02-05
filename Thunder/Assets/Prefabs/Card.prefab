@@ -725,6 +725,7 @@ GameObject:
   - component: {fileID: 3813271616942789651}
   - component: {fileID: -3876546491806128437}
   - component: {fileID: 370278883149272522}
+  - component: {fileID: 3337904690903979399}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -771,6 +772,7 @@ MonoBehaviour:
   manaCost: {fileID: 3232793084824827109}
   attack: {fileID: 7934267559352147391}
   health: {fileID: 5810130500444654196}
+  currentCardState: 0
 --- !u!114 &4904449945779543287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -784,7 +786,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardBack: {fileID: 6937234466955504104}
-  cardBackActive: 1
 --- !u!114 &1563915504473239850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -861,6 +862,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drag: {fileID: 1563915504473239850}
   createPlaceHolder: {fileID: -3876546491806128437}
+--- !u!114 &3337904690903979399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4651366815562492899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dfe6bb9ebef04c4a8c8827469b5af3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4713591619278134445
 GameObject:
   m_ObjectHideFlags: 0
