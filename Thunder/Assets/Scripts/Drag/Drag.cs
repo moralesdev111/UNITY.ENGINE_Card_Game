@@ -11,7 +11,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     public Transform defaultParent = null;
     public Transform placeHolderParent = null;
     private bool canDrag = false;
-    private ManaCheck manaCheck;
+    private ManaManager manaManager;
     private CardUI cardDetails;
 
 
@@ -19,7 +19,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     {
         GetCardDetails();
 
-        if (manaCheck.GreenLight(cardDetails.card))
+        if (manaManager.GreenLight(cardDetails.card))
         {
             canDrag = true;
             placeHolder.CreatePlaceHolderObject();
@@ -56,7 +56,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     {
         if (canDrag)
         {
-            manaCheck.ManaDecrease(cardDetails.card.manaCost);
+            manaManager.ManaDecrease(cardDetails.card.manaCost);
             placeHolder.DestroyPlaceHolder();
             GetComponent<CanvasGroup>().blocksRaycasts = true;
         }
@@ -68,7 +68,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
     private void GetCardDetails()
     {
-        manaCheck = FindObjectOfType<ManaCheck>();
+        manaManager = FindObjectOfType<ManaManager>();
         cardDetails = GetComponent<CardUI>();
     }
 }
