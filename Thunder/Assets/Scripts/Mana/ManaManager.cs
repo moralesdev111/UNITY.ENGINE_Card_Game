@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ManaCheck : MonoBehaviour
+public class ManaManager : MonoBehaviour
 {
     [SerializeField] GameSettings gameSettings;
 

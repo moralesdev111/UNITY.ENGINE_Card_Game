@@ -40,7 +40,7 @@ public class Hand : SlotContainer, IUncoverCardeable
         if (randomCard != null)
         {
             
-          
+            randomCard.cardState = Card.CardState.hand;
             GameObject newCardObject = drawToHand.VisualInstantiateInHand();
             CardBack randomizedCardBack = newCardObject.GetComponent<CardBack>();
             randomizedCardBack.UncoverCard();
