@@ -55,7 +55,6 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     {
         if (canDrag)
         {
-            manaManager.ManaDecrease(cardDetails.card.manaCost);
             placeHolder.DestroyPlaceHolder();
             GetComponent<CanvasGroup>().blocksRaycasts = true;
         }

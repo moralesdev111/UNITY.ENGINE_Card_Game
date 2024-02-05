@@ -27,17 +27,27 @@ public class CardInstance : MonoBehaviour
 
     private void Start()
     {
-        this.name = card.cardName;
-        currentCardState = CardState.deck;
+        SetHierarchyName();
+        SetInitialState();
         if (isInitialized)
         {
-            return; 
+            return;
         }
         if (card != null)
         {
             SetCardUI();
             isInitialized = true;
         }
+    }
+
+    private void SetInitialState()
+    {
+        currentCardState = CardState.deck;
+    }
+
+    private void SetHierarchyName()
+    {
+        this.name = card.cardName;
     }
 
     public void SetCardUI()

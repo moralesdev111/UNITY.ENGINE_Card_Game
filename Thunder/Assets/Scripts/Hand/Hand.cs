@@ -2,25 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hand : SlotContainer, IUncoverCardeable
+public class Hand : SlotContainer
 {
     [Header("References")]
     [SerializeField] PlayerDeck playerDeck;
     [SerializeField] DrawToHand drawToHand;
     [SerializeField] DrawCard drawCard;
+    [SerializeField] HandLogistics handLogistics;
 
     void Start()
     {
         ContainerSizeLimit = 5;
         container = new List<Card>();
         RandomizeContainer();
-        UncoverCard();
+        handLogistics.UncoverCard();
     }
 
     void Update()
     {
         UpdateCurrentHandSize();
-        SetHandState();
+        handLogistics.SetHandState();
     }
 
     public override void RandomizeContainer()
@@ -39,8 +40,10 @@ public class Hand : SlotContainer, IUncoverCardeable
             if (randomCard != null)
             {
                 GameObject newCardObject = drawToHand.VisualInstantiateInHand();
+                
                 CardBack randomizedCardBack = newCardObject.GetComponent<CardBack>();
                 randomizedCardBack.UncoverCard();
+
                 CardInstance cardInstance = newCardObject.GetComponent<CardInstance>();
                 cardInstance.card = randomCard;
 
@@ -53,33 +56,8 @@ public class Hand : SlotContainer, IUncoverCardeable
         }
     }
 
-    public void UncoverCard()
-    {
-        for (int i = 0; i < CurrentSize; i++)
-        {
-            Transform child = transform.GetChild(i);
-            child.GetComponent<CardBack>().UncoverCard();
-        }
-    }
-
     public void UpdateCurrentHandSize()
     {
         CurrentSize = Container.Count;
-    }
-
-    private void SetHandState()
-    {
-        foreach (Transform childTransform in transform)
-        {
-            CardInstance cardInstance = childTransform.GetComponent<CardInstance>();
-            if (cardInstance != null)
-            {
-                cardInstance.currentCardState = CardInstance.CardState.hand;
-            }
-            else
-            {
-                return;
-            }
-        }
     }
 }

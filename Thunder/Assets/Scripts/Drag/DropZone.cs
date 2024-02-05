@@ -7,33 +7,28 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
 {
      [SerializeField] Hand hand;
      [SerializeField] Transform battlefieldParent;
+     [SerializeField] ManaManager manaManager;
+     
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         if(eventData.pointerDrag == null) return;
 
-        Drag drag = eventData.pointerDrag.GetComponent<Drag>();
-        if(drag !=null)
-        {
-            drag.placeHolderParent = this.transform;
-        }
+        SetPlaceholderParent(eventData.pointerDrag);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         if(eventData.pointerDrag == null) return;
 
-        Drag drag = eventData.pointerDrag.GetComponent<Drag>();
-        if(drag !=null && drag.placeHolderParent == this.transform)
-        {
-            drag.placeHolderParent = drag.defaultParent;
-        }
+         ResetPlaceholderParent(eventData.pointerDrag);
     }
 
+     
     public void OnDrop(PointerEventData eventData)
 {
     Drag drag = eventData.pointerDrag.GetComponent<Drag>();
-    if (drag != null)
+    if (drag != null && manaManager.GreenLight(eventData.pointerDrag.GetComponent<CardInstance>().card))
     {
         drag.defaultParent = this.transform;
 
@@ -48,13 +43,13 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
             {
                 eventData.pointerDrag.GetComponent<CardInstance>().currentCardState = CardInstance.CardState.battlefield;
                 hand.Container.Remove(drag.GetComponent<CardInstance>().card);
+                 manaManager.ManaDecrease(eventData.pointerDrag.GetComponent<CardInstance>().card.manaCost);
             }
              else if(this.gameObject.CompareTag("Hand"))
             {
                 if(hand.CurrentSize < hand.ContainerSizeLimit)
                 {
                     eventData.pointerDrag.GetComponent<CardInstance>().currentCardState = CardInstance.CardState.hand;
-                    hand.Container.Add(drag.GetComponent<CardInstance>().card);
                 }
                 else
                 {
@@ -65,6 +60,24 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         }
     }
 }
+
+private void SetPlaceholderParent(GameObject pointerDrag)
+    {
+        Drag drag = pointerDrag.GetComponent<Drag>();
+        if (drag != null)
+        {
+            drag.placeHolderParent = transform;
+        }
+    }
+
+    private void ResetPlaceholderParent(GameObject pointerDrag)
+    {
+        Drag drag = pointerDrag.GetComponent<Drag>();
+        if (drag != null && drag.placeHolderParent == transform)
+        {
+            drag.placeHolderParent = drag.defaultParent;
+        }
+    }
 }
 
 

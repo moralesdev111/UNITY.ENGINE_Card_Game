@@ -4,16 +4,10 @@ using TMPro;
 
 public class TurnActions : MonoBehaviour
 {
-    
-   
-    
     [Header("References")]
     [SerializeField] TurnState turnState;
     [SerializeField] TextMeshProUGUI turnText;
     [SerializeField] TextMeshProUGUI manaText;
-    [SerializeField] DrawCard drawCard;
-    [SerializeField] DrawToHand drawToHand;
-    [SerializeField] PlayerDeck playerDeck;
     [SerializeField] Hand hand;
     [SerializeField] GameSettings gameSettings;
 

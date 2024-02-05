@@ -10,7 +10,6 @@ public class AddRemoveCardFromPlayerDeck : MonoBehaviour
     [SerializeField] CardDatabase cardDatabase;
 
     
-
     public void RemoveCard()
     {
         if(playerDeck.Container.Count > 0)
@@ -23,7 +22,6 @@ public class AddRemoveCardFromPlayerDeck : MonoBehaviour
             Debug.Log("No cards left");
             return;
         }
-        
     }
     public void AddCard()
     {
@@ -37,6 +35,5 @@ public class AddRemoveCardFromPlayerDeck : MonoBehaviour
             Debug.Log("Cant add more cards");
             return;
         }
-       
     }
 }

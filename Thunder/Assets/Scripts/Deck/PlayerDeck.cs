@@ -26,7 +26,6 @@ public class PlayerDeck : SlotContainer
         for (int i = 0; i < ContainerSizeLimit; i++)
         {
             Card randomCard = drawCard.DrawOneRandomCard(cardDatabase.cardDatabase);
-
             if (randomCard != null)
             {
                 Container.Add(randomCard);                

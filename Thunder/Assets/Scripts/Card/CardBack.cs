@@ -6,7 +6,7 @@ public class CardBack : MonoBehaviour, IUncoverCardeable
 {
     [Header("References")]
     [SerializeField] GameObject cardBack;
-    [SerializeField] bool cardBackActive;
+    private bool cardBackActive;
 
    
     void Update()

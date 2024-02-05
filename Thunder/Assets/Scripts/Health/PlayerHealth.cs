@@ -19,8 +19,13 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
+        CalculateHealth();
+    }
+
+    private void CalculateHealth()
+    {
         healthVisual.fillAmount = currentHealth / maxHealth;
-        if(currentHealth >= maxHealth)
+        if (currentHealth >= maxHealth)
         {
             currentHealth = maxHealth;
         }
