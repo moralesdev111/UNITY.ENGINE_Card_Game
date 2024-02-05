@@ -6,7 +6,6 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "Card", menuName = "ScriptableObjects/Cards")]
 public class Card : ScriptableObject
 {
-    public CardState cardState;
     public string cardName;
     public Sprite artwork;
     public Sprite cardBack;
@@ -21,4 +20,5 @@ public class Card : ScriptableObject
         battlefield,
         discard
     }
+     public CardState cardState;
 }

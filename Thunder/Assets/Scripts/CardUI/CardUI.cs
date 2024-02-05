@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class CardUI : MonoBehaviour
 {
-    public Card card;
+    public Card cardInstance;
     [Header("References")]
     [SerializeField] TextMeshProUGUI cardName;
     [SerializeField] Image artworkImage;
@@ -22,7 +22,7 @@ public class CardUI : MonoBehaviour
         {
             return; 
         }
-        if (card != null)
+        if (cardInstance != null)
         {
             SetCardUI();
             isInitialized = true;
@@ -31,11 +31,11 @@ public class CardUI : MonoBehaviour
 
     public void SetCardUI()
     {
-        cardName.text = card.cardName;
-        artworkImage.sprite = card.artwork;
-        cardBack.sprite = card.cardBack;
-        manaCost.text = card.manaCost.ToString();
-        attack.text = card.attack.ToString();
-        health.text = card.health.ToString();
+        cardName.text = cardInstance.cardName;
+        artworkImage.sprite = cardInstance.artwork;
+        cardBack.sprite = cardInstance.cardBack;
+        manaCost.text = cardInstance.manaCost.ToString();
+        attack.text = cardInstance.attack.ToString();
+        health.text = cardInstance.health.ToString();
     }
 }

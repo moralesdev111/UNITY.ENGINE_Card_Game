@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-
 public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] PlaceHolder placeHolder;
@@ -18,8 +17,8 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     public void OnBeginDrag(PointerEventData eventData)
     {
         GetCardDetails();
-
-        if (manaManager.GreenLight(cardDetails.card))
+        //check if instantiated card currentstate is battlefield
+        if (manaManager.GreenLight(cardDetails.cardInstance))
         {
             canDrag = true;
             placeHolder.CreatePlaceHolderObject();
@@ -56,7 +55,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     {
         if (canDrag)
         {
-            manaManager.ManaDecrease(cardDetails.card.manaCost);
+            manaManager.ManaDecrease(cardDetails.cardInstance.manaCost);
             placeHolder.DestroyPlaceHolder();
             GetComponent<CanvasGroup>().blocksRaycasts = true;
         }
