@@ -44,8 +44,8 @@ public class Hand : SlotContainer, IUncoverCardeable
             GameObject newCardObject = drawToHand.VisualInstantiateInHand();
             CardBack randomizedCardBack = newCardObject.GetComponent<CardBack>();
             randomizedCardBack.UncoverCard();
-            CardUI randomizedCardUI = newCardObject.GetComponent<CardUI>();
-            randomizedCardUI.cardInstance = randomCard;
+            CardInstance randomizedCardUI = newCardObject.GetComponent<CardInstance>();
+            randomizedCardUI.card = randomCard;
 
             container.Add(randomCard);
         }

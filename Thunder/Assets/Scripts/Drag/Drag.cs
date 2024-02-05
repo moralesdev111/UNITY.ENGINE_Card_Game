@@ -11,14 +11,14 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     public Transform placeHolderParent = null;
     private bool canDrag = false;
     private ManaManager manaManager;
-    private CardUI cardDetails;
+    private CardInstance cardDetails;
 
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         GetCardDetails();
         //check if instantiated card currentstate is battlefield
-        if (manaManager.GreenLight(cardDetails.cardInstance))
+        if (manaManager.GreenLight(cardDetails.card))
         {
             canDrag = true;
             placeHolder.CreatePlaceHolderObject();
@@ -55,7 +55,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     {
         if (canDrag)
         {
-            manaManager.ManaDecrease(cardDetails.cardInstance.manaCost);
+            manaManager.ManaDecrease(cardDetails.card.manaCost);
             placeHolder.DestroyPlaceHolder();
             GetComponent<CanvasGroup>().blocksRaycasts = true;
         }
@@ -68,6 +68,6 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     private void GetCardDetails()
     {
         manaManager = FindObjectOfType<ManaManager>();
-        cardDetails = GetComponent<CardUI>();
+        cardDetails = GetComponent<CardInstance>();
     }
 }

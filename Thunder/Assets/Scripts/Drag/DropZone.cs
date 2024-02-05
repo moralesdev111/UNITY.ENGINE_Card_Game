@@ -42,19 +42,19 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
             if (drag.placeHolderParent != this.transform)
             {
                 // Card left the hand and didn't return
-                hand.Container.Remove(drag.GetComponent<CardUI>().cardInstance);
+                hand.Container.Remove(drag.GetComponent<CardInstance>().card);
             }
             else if (this.gameObject.CompareTag("Battlefield"))
             {
-                eventData.pointerDrag.GetComponent<CardUI>().cardInstance.cardState = Card.CardState.battlefield;
-                hand.Container.Remove(drag.GetComponent<CardUI>().cardInstance);
+                eventData.pointerDrag.GetComponent<CardInstance>().card.cardState = Card.CardState.battlefield;
+                hand.Container.Remove(drag.GetComponent<CardInstance>().card);
             }
              else if(this.gameObject.CompareTag("Hand"))
             {
                 if(hand.CurrentSize < hand.ContainerSizeLimit)
                 {
-                    eventData.pointerDrag.GetComponent<CardUI>().cardInstance.cardState = Card.CardState.hand;
-                    hand.Container.Add(drag.GetComponent<CardUI>().cardInstance);
+                    eventData.pointerDrag.GetComponent<CardInstance>().card.cardState = Card.CardState.hand;
+                    hand.Container.Add(drag.GetComponent<CardInstance>().card);
                 }
                 else
                 {
