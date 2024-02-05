@@ -6,45 +6,69 @@ using UnityEngine.EventSystems;
 
 public class Drag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    [SerializeField] CreatePlaceHolder createPlaceHolder;
+    [SerializeField] PlaceHolder placeHolder;
     [SerializeField] SetSiblingIndex setSiblingIndex;
     public Transform defaultParent = null;
     public Transform placeHolderParent = null;
-   
+    private bool canDrag = false;
+    private ManaCheck manaCheck;
+    private CardUI cardDetails;
+
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        createPlaceHolder.CreatePlaceHolderObject();
+        GetCardDetails();
 
-        createPlaceHolder.placeHolder.transform.SetSiblingIndex(this.transform.GetSiblingIndex());
-
-        defaultParent = this.transform.parent;
-        placeHolderParent = defaultParent;
-        this.transform.SetParent(this.transform.root);
-
-        GetComponent<CanvasGroup>().blocksRaycasts = false;
+        if (manaCheck.GreenLight(cardDetails.card))
+        {
+            canDrag = true;
+            placeHolder.CreatePlaceHolderObject();
+            placeHolder.ManagePlaceHolderObjectParenting();
+            GetComponent<CanvasGroup>().blocksRaycasts = false;
+        }
+        else
+        {
+            canDrag = false;
+            return;
+        }
     }
-
-    
 
     public void OnDrag(PointerEventData eventData)
     {
-        this.transform.position = eventData.position;
+        if(canDrag)
+        {
+            this.transform.position = eventData.position;
 
-        if (createPlaceHolder.placeHolder.transform.parent != placeHolderParent)
-            createPlaceHolder.placeHolder.transform.SetParent(placeHolderParent);
-
-        setSiblingIndex.SetSiblingIndexOnRuntime();
+            if (placeHolder.placeHolder.transform.parent != placeHolderParent)
+            {
+                placeHolder.placeHolder.transform.SetParent(placeHolderParent);
+            }
+                setSiblingIndex.SetSiblingIndexOnRuntime();
+        }
+        else
+        {
+            return;
+        } 
     }
 
-    
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        this.transform.SetParent(defaultParent);
-        this.transform.SetSiblingIndex(createPlaceHolder.placeHolder.transform.GetSiblingIndex());
-        GetComponent<CanvasGroup>().blocksRaycasts = true;
+        if (canDrag)
+        {
+            manaCheck.ManaDecrease(cardDetails.card.manaCost);
+            placeHolder.DestroyPlaceHolder();
+            GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+        else
+        {
+            return;
+        } 
+    }
 
-        Destroy(createPlaceHolder.placeHolder);
+    private void GetCardDetails()
+    {
+        manaCheck = FindObjectOfType<ManaCheck>();
+        cardDetails = GetComponent<CardUI>();
     }
 }

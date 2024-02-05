@@ -5,7 +5,7 @@ using UnityEngine;
 public class SetSiblingIndex : MonoBehaviour
 {
     [SerializeField] Drag drag;
-    [SerializeField] CreatePlaceHolder createPlaceHolder;
+    [SerializeField] PlaceHolder createPlaceHolder;
 
     public void SetSiblingIndexOnRuntime()
     {

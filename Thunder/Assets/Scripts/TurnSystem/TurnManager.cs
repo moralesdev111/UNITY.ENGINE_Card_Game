@@ -6,11 +6,12 @@ public class TurnManager : MonoBehaviour
 {
     [SerializeField] TurnState turnState;
     [SerializeField] TurnActions turnActions;
+    [SerializeField] GameSettings gameSettings;
 
     void Start()
     {
         turnState.currentTurnState = TurnState.TurnStates.playerTurn;
-        turnActions.InitialTurnSettings();       
+        gameSettings.InitialTurnSettings();       
     }
 
     void Update()
@@ -20,7 +21,7 @@ public class TurnManager : MonoBehaviour
 
     public void EndPlayerTurn()
     {
-        if(turnActions.isPlayerTurn)
+        if(gameSettings.isPlayerTurn)
         {
            turnActions.End(true);
         }
@@ -28,7 +29,7 @@ public class TurnManager : MonoBehaviour
 
     public void EndOpponentTurn()
     {
-        if(!turnActions.isPlayerTurn)
+        if(!gameSettings.isPlayerTurn)
         {
             turnActions.End(false);
         }

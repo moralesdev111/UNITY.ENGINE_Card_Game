@@ -797,7 +797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 609acb47b84faf14cb45d1fde6187405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createPlaceHolder: {fileID: -3876546491806128437}
+  placeHolder: {fileID: -3876546491806128437}
   setSiblingIndex: {fileID: 370278883149272522}
   defaultParent: {fileID: 0}
   placeHolderParent: {fileID: 0}
@@ -845,6 +845,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d33d493bec824542839eee31288620d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drag: {fileID: 1563915504473239850}
   placeHolder: {fileID: 0}
 --- !u!114 &370278883149272522
 MonoBehaviour:

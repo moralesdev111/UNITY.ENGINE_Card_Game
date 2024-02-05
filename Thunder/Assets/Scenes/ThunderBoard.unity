@@ -2275,6 +2275,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755243166}
   m_CullTransparentMesh: 1
+--- !u!1 &807347232
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 807347234}
+  - component: {fileID: 807347233}
+  m_Layer: 0
+  m_Name: ManaCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &807347233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807347232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e692586e92e80ee4cb037e2d6103fb37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameSettings: {fileID: 1357867415}
+--- !u!4 &807347234
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807347232}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &877428796
 GameObject:
   m_ObjectHideFlags: 0
@@ -3425,6 +3470,7 @@ GameObject:
   - component: {fileID: 1357867411}
   - component: {fileID: 1357867413}
   - component: {fileID: 1357867414}
+  - component: {fileID: 1357867415}
   m_Layer: 0
   m_Name: TurnManager
   m_TagString: Untagged
@@ -3446,6 +3492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnState: {fileID: 1357867413}
   turnActions: {fileID: 1357867414}
+  gameSettings: {fileID: 1357867415}
 --- !u!4 &1357867412
 Transform:
   m_ObjectHideFlags: 0
@@ -3486,12 +3533,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61ecb4cc0e8247349b92762d5401a314, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayerTurn: 0
-  playerTurn: 0
-  opponentTurn: 0
-  maxMana: 0
-  currentMana: 0
-  startTurn: 0
   turnState: {fileID: 1357867413}
   turnText: {fileID: 1373280520}
   manaText: {fileID: 877428798}
@@ -3499,6 +3540,25 @@ MonoBehaviour:
   drawToHand: {fileID: 646918184}
   playerDeck: {fileID: 326385850}
   hand: {fileID: 646918183}
+  gameSettings: {fileID: 1357867415}
+--- !u!114 &1357867415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357867410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96e93101272c7f248b4125945a919996, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxMana: 0
+  currentMana: 0
+  startTurn: 0
+  isPlayerTurn: 0
+  playerTurn: 0
+  opponentTurn: 0
 --- !u!1 &1373280518
 GameObject:
   m_ObjectHideFlags: 0
@@ -4352,3 +4412,4 @@ SceneRoots:
   - {fileID: 1762329838}
   - {fileID: 326385851}
   - {fileID: 1357867412}
+  - {fileID: 807347234}
