@@ -787,6 +787,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardBack: {fileID: 6937234466955504104}
+  cardBackActive: 1
 --- !u!114 &1563915504473239850
 MonoBehaviour:
   m_ObjectHideFlags: 0

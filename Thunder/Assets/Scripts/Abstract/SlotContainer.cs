@@ -18,4 +18,9 @@ public abstract class SlotContainer : MonoBehaviour
     }
 
     public abstract void RandomizeContainer();
+
+    public void UpdateContainerSize()
+    {
+        CurrentSize = Container.Count;
+    }
 }

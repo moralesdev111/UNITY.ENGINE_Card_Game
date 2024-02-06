@@ -1,21 +1,20 @@
-using Unity.VisualScripting;
-using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
-
-public class PlayerDeck : SlotContainer
+public class OpponentDeck : SlotContainer
 {
-    [Header("References")]
-   [SerializeField] DrawCard drawCard;
-   [SerializeField] CardDatabase cardDatabase;
+    [SerializeField] DrawCard drawCard;
+    [SerializeField] CardDatabase cardDatabase;
 
 
-    void Awake()
+    private void Awake()
     {
         ContainerSizeLimit = 15;
         container = new List<Card>();
         RandomizeContainer();
     }
+    
 
     void Update()
     {
@@ -33,7 +32,7 @@ public class PlayerDeck : SlotContainer
             }
             else
             {
-                Debug.LogWarning("Unable to get a random card from the database.");
+                Debug.LogWarning("Unable to get an Opponent random card from the database.");
             }
         }
     }

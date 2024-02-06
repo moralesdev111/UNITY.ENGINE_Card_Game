@@ -1,27 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hand : SlotContainer
+public class OpponentHand : SlotContainer
 {
-    [Header("References")]
-    [SerializeField] PlayerDeck playerDeck;
-    [SerializeField] DrawToHand drawToHand;
+    [SerializeField] OpponentDeck opponentDeck;
     [SerializeField] DrawCard drawCard;
-    [SerializeField] HandLogistics handLogistics;
+    [SerializeField] DrawToHand drawToHand;
 
     void Start()
     {
         ContainerSizeLimit = 5;
         container = new List<Card>();
         RandomizeContainer();
-        handLogistics.UncoverCard();
     }
 
     void Update()
     {
         UpdateContainerSize();
-        handLogistics.SetHandState();
     }
 
     public override void RandomizeContainer()
@@ -32,18 +29,14 @@ public class Hand : SlotContainer
         }
     }
 
-    public void StartDrawProcess()
+    private void StartDrawProcess()
     {
         if (CurrentSize < ContainerSizeLimit)
         {
-            Card randomCard = drawCard.DrawOneRandomCard(playerDeck.Container);
+            Card randomCard = drawCard.DrawOneRandomCard(opponentDeck.Container);
             if (randomCard != null)
             {
                 GameObject newCardObject = drawToHand.VisualInstantiateInHand();
-                
-                CardBack randomizedCardBack = newCardObject.GetComponent<CardBack>();
-                randomizedCardBack.UncoverCard();
-
                 CardInstance cardInstance = newCardObject.GetComponent<CardInstance>();
                 cardInstance.card = randomCard;
 
