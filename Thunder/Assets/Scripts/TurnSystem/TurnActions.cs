@@ -55,6 +55,6 @@ public class TurnActions : MonoBehaviour
         }
 
         // Invoke the delegate to notify subscribers
-        onEndTurn?.Invoke(opponentTurn);
+        onEndTurn?.Invoke(!gameSettings.isPlayerTurn);
     }
 }

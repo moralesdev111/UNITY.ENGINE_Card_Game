@@ -726,6 +726,7 @@ GameObject:
   - component: {fileID: -3876546491806128437}
   - component: {fileID: 370278883149272522}
   - component: {fileID: 3337904690903979399}
+  - component: {fileID: 9222028804586736938}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -874,6 +875,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dfe6bb9ebef04c4a8c8827469b5af3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardInstance: {fileID: 2742093121492218576}
+  cardImage: {fileID: 3823601408538653341}
+  canAttack: 1
+--- !u!114 &9222028804586736938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4651366815562492899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d24c605d26392654ba762dfd496d5c51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardInstance: {fileID: 2742093121492218576}
+  cardImage: {fileID: 3823601408538653341}
 --- !u!1 &4713591619278134445
 GameObject:
   m_ObjectHideFlags: 0

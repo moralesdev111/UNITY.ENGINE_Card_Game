@@ -43,7 +43,7 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
             {
                 eventData.pointerDrag.GetComponent<CardInstance>().currentCardState = CardInstance.CardState.battlefield;
                 hand.Container.Remove(drag.GetComponent<CardInstance>().card);
-                 manaManager.ManaDecrease(eventData.pointerDrag.GetComponent<CardInstance>().card.manaCost);
+                manaManager.ManaDecrease(eventData.pointerDrag.GetComponent<CardInstance>().card.manaCost);
             }
              else if(this.gameObject.CompareTag("Hand"))
             {
