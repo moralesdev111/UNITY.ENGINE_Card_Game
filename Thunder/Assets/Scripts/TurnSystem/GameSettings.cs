@@ -10,6 +10,8 @@ public class GameSettings : MonoBehaviour
     public bool isPlayerTurn;
     public int playerTurn;
     public int opponentTurn;
+    public int opponentMaxMana;
+    public int opponentCurrentMana;
     
 
     public void InitialTurnSettings()
@@ -20,5 +22,8 @@ public class GameSettings : MonoBehaviour
        
         maxMana = 1;
         currentMana = 1;
+
+        opponentCurrentMana = 0;
+        opponentMaxMana = 0;
     }
 }

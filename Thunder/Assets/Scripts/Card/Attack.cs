@@ -27,6 +27,7 @@ public class Attack : MonoBehaviour, IPointerClickHandler
     {
         HighlightCard(canAttack);
     }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         if (cardInstance.currentCardState == CardInstance.CardState.battlefield && turnActions.turnState.currentTurnState == TurnState.TurnStates.playerTurn && canAttack)
@@ -42,18 +43,15 @@ public class Attack : MonoBehaviour, IPointerClickHandler
         {
             canAttack = true;
         }
+        else if(turnActions.turnState.currentTurnState == TurnState.TurnStates.opponentTurn)
+        {
+            canAttack = false;
+        }
     }
 
     private void HighlightCard(bool canAttack)
     {
-        if(canAttack)
-        {
-            cardImage.color = Color.red;
-        }
-        else
-        {
-            cardImage.color = Color.black;
-        }
+        cardImage.color = canAttack ? Color.red : Color.black;
     }
 
     private void ComponentSetup()

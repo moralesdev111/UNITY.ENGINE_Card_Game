@@ -7,8 +7,9 @@ public class TurnActions : MonoBehaviour
     public TurnState turnState;
     [SerializeField] TextMeshProUGUI turnText;
     [SerializeField] TextMeshProUGUI manaText;
-    [SerializeField] Hand hand;
+    [SerializeField] TextMeshProUGUI opponentManaText;
     [SerializeField] GameSettings gameSettings;
+     [SerializeField] EndTurnLogistics endTurnLogistics;
 
     // Define a delegate for the end of turn
     public delegate void EndTurnDelegate(bool opponentTurn);
@@ -16,45 +17,35 @@ public class TurnActions : MonoBehaviour
 
     void Update()
     {
-        manaText.text = gameSettings.currentMana + " / " + gameSettings.maxMana;
+        UpdateManaText();
     }
 
     public void Actions()
     {
-        if(turnState.currentTurnState == TurnState.TurnStates.playerTurn)
-        {
-            turnText.text = "Player Turn";   
-        }
-        else if(turnState.currentTurnState == TurnState.TurnStates.opponentTurn)
-        {
-            turnText.text = "Opponent Turn";  
-        }
+        UpdateTurnText();
     }
 
-    public void End(bool opponentTurn)
+    public void EndTurnLogistics(bool ownerTurn)
     {
-        if(opponentTurn)
+        if(ownerTurn)
         {
-            gameSettings.isPlayerTurn = false;
-            this.gameSettings.opponentTurn += 1;
-            gameSettings.startTurn = false;
-            turnState.currentTurnState = TurnState.TurnStates.opponentTurn;
+            endTurnLogistics.LogisticsForOpponent();
         }
         else
         {
-            gameSettings.isPlayerTurn = true;
-            gameSettings.playerTurn += 1;
-
-            gameSettings.maxMana+= 1;
-            gameSettings.currentMana = gameSettings.maxMana;
-            gameSettings.startTurn = true;
-            
-            hand.StartDrawProcess();
-
-            turnState.currentTurnState = TurnState.TurnStates.playerTurn;
+            endTurnLogistics.LogisticsForPlayer();
         }
-
-        // Invoke the delegate to notify subscribers
         onEndTurn?.Invoke(!gameSettings.isPlayerTurn);
+    }
+    
+    private void UpdateManaText()
+    {
+        manaText.text = gameSettings.currentMana + " / " + gameSettings.maxMana;
+        opponentManaText.text = gameSettings.opponentCurrentMana + " / " + gameSettings.opponentMaxMana;
+    }
+
+     private void UpdateTurnText()
+    {
+        turnText.text = turnState.currentTurnState == TurnState.TurnStates.playerTurn ? "Player Turn" : "Opponent Turn";
     }
 }
