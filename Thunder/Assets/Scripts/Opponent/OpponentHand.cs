@@ -10,7 +10,7 @@ public class OpponentHand : SlotContainer
     [SerializeField] DrawCard drawCard;
     [SerializeField] DrawToHand drawToHand;
     private List<GameObject> instantiatedCards = new List<GameObject>();
-   
+   private string tagName = "Opponent";
 
     void Start()
     {
@@ -40,9 +40,10 @@ public class OpponentHand : SlotContainer
             if (randomCard != null)
             {
                 GameObject newCardObject = drawToHand.VisualInstantiateInHand();
+                newCardObject.tag = tagName;
                 CardInstance cardInstance = newCardObject.GetComponent<CardInstance>();
                 cardInstance.card = randomCard;
-
+                
                 container.Add(randomCard);
                 instantiatedCards.Add(newCardObject);
             }
