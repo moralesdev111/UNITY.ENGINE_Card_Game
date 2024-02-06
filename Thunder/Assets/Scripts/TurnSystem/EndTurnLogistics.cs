@@ -6,6 +6,7 @@ public class EndTurnLogistics : MonoBehaviour
 {
     [SerializeField] GameSettings gameSettings;
     [SerializeField] Hand hand;
+    [SerializeField] OpponentHand opponentHand;
     [SerializeField] TurnState turnState;
 
 
@@ -32,6 +33,9 @@ public class EndTurnLogistics : MonoBehaviour
         gameSettings.opponentCurrentMana = gameSettings.opponentMaxMana;
 
         gameSettings.startTurn = false;
+
+        opponentHand.StartDrawProcess();
+        
         turnState.currentTurnState = TurnState.TurnStates.opponentTurn;
     }
 }

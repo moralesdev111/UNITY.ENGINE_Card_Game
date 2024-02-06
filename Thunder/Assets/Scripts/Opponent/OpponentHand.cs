@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class OpponentHand : SlotContainer
@@ -8,6 +9,8 @@ public class OpponentHand : SlotContainer
     [SerializeField] OpponentDeck opponentDeck;
     [SerializeField] DrawCard drawCard;
     [SerializeField] DrawToHand drawToHand;
+    private List<GameObject> instantiatedCards = new List<GameObject>();
+   
 
     void Start()
     {
@@ -29,7 +32,7 @@ public class OpponentHand : SlotContainer
         }
     }
 
-    private void StartDrawProcess()
+    public void StartDrawProcess()
     {
         if (CurrentSize < ContainerSizeLimit)
         {
@@ -41,6 +44,7 @@ public class OpponentHand : SlotContainer
                 cardInstance.card = randomCard;
 
                 container.Add(randomCard);
+                instantiatedCards.Add(newCardObject);
             }
             else
             {
@@ -48,4 +52,10 @@ public class OpponentHand : SlotContainer
             }
         }
     }
+
+     public List<GameObject> GetInstantiatedCards()
+    {
+        return instantiatedCards;
+    }
+
 }

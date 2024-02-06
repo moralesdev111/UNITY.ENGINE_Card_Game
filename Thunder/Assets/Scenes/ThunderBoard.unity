@@ -2000,6 +2000,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588132925}
   m_CullTransparentMesh: 1
+--- !u!1 &632789373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 632789375}
+  - component: {fileID: 632789374}
+  m_Layer: 0
+  m_Name: Opponent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &632789374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632789373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b2894ec7ee40a34eb97c01f413f21fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnState: {fileID: 1357867413}
+  gameSettings: {fileID: 1357867415}
+  opponentHand: {fileID: 39678269}
+  opponentBattlefield: {fileID: 1275386980}
+--- !u!4 &632789375
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632789373}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &639208947
 GameObject:
   m_ObjectHideFlags: 0
@@ -3905,6 +3953,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameSettings: {fileID: 1357867415}
   hand: {fileID: 646918183}
+  opponentHand: {fileID: 39678269}
   turnState: {fileID: 1357867413}
 --- !u!1 &1373280518
 GameObject:
@@ -4975,3 +5024,4 @@ SceneRoots:
   - {fileID: 1357867412}
   - {fileID: 807347234}
   - {fileID: 1997776928}
+  - {fileID: 632789375}
