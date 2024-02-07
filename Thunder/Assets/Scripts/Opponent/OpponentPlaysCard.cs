@@ -7,6 +7,7 @@ public class OpponentPlaysCard : MonoBehaviour
     [SerializeField] GameSettings gameSettings;
     [SerializeField] OpponentHand opponentHand;
     [SerializeField] Transform opponentBattlefield;
+    [SerializeField] OpponentAttack opponentAttack;
     private bool hasPlayedCard = false;
 
 
@@ -16,11 +17,14 @@ public class OpponentPlaysCard : MonoBehaviour
         if (turnState.currentTurnState == TurnState.TurnStates.playerTurn)
         {
             hasPlayedCard = false;
+            opponentAttack.attackExecuted = false;
         }
         if (!hasPlayedCard && turnState.currentTurnState == TurnState.TurnStates.opponentTurn)
         {
             PlayCard();
             hasPlayedCard = true;
+            opponentAttack.readyToAttack = true;
+            opponentAttack.attackExecuted = false;
         }
     }
 

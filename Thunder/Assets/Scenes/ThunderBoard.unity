@@ -2056,6 +2056,7 @@ GameObject:
   m_Component:
   - component: {fileID: 632789375}
   - component: {fileID: 632789374}
+  - component: {fileID: 632789376}
   m_Layer: 0
   m_Name: Opponent
   m_TagString: Untagged
@@ -2079,6 +2080,7 @@ MonoBehaviour:
   gameSettings: {fileID: 1357867415}
   opponentHand: {fileID: 39678269}
   opponentBattlefield: {fileID: 1275386980}
+  opponentAttack: {fileID: 632789376}
 --- !u!4 &632789375
 Transform:
   m_ObjectHideFlags: 0
@@ -2094,6 +2096,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &632789376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632789373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3911be966d1ded42b2d8d33c9db9d22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerBattlefield: {fileID: 1571123824}
+  opponentBattlefield: {fileID: 1275386980}
+  opponentPlaysCard: {fileID: 632789374}
+  playerHealth: {fileID: 35557630}
+  readyToAttack: 0
+  attackExecuted: 0
 --- !u!1 &639208947
 GameObject:
   m_ObjectHideFlags: 0
