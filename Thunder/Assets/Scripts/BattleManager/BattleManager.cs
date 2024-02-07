@@ -28,6 +28,7 @@ public class BattleManager : MonoBehaviour
     {
         Debug.Log("battle started");
         defender.healthInstanceCurrentHealth -= attacker.card.attack;
+        attacker.healthInstanceCurrentHealth-= defender.card.attack;
         attacker.GetComponent<Attack>().canAttack = false;
         
        

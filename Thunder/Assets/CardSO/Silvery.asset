@@ -15,6 +15,6 @@ MonoBehaviour:
   cardName: Silvery
   artwork: {fileID: 494406316, guid: 91ece539279118a438c900dfb08582ed, type: 3}
   cardBack: {fileID: 2120042908, guid: 71ad172f81917dc4c88b385499ba85c4, type: 3}
-  manaCost: 1
+  manaCost: 2
   attack: 2
   health: 2

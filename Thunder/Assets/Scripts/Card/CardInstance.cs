@@ -46,7 +46,7 @@ public class CardInstance : MonoBehaviour
 
     private void Update()
     {
-        health.text = card.health.ToString();
+        health.text = healthInstanceCurrentHealth.ToString();
         if(healthInstanceCurrentHealth < 1)
         {
             Destroy(gameObject);

@@ -774,6 +774,8 @@ MonoBehaviour:
   manaCost: {fileID: 3232793084824827109}
   attack: {fileID: 7934267559352147391}
   health: {fileID: 5810130500444654196}
+  healthInstanceMaxHealth: 0
+  healthInstanceCurrentHealth: 0
   currentCardState: 0
 --- !u!114 &4904449945779543287
 MonoBehaviour:
