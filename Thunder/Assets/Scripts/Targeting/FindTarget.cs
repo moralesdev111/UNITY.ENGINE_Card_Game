@@ -17,40 +17,38 @@ public class FindTarget : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-{
-    CardInstance card = collision.GetComponent<CardInstance>();
-
-    // Check if the collision is with a card and not with the arrow trigger's descendants
-    if (card != null && !IsGrandChild(collision.gameObject) && card.tag == "Opponent")
     {
-        target = card;
-        battleManager.battlingCards[1]= target;
-        Debug.Log("Target: " + target.name);
-    }
-    else if(!IsGrandChild(collision.gameObject) && collision.tag == "OpponentHero")
-    {
-        OpponentHealth enemyHealth = collision.GetComponent<OpponentHealth>();
-        enemyHealth.currentHealth -= attacker.card.attack;
-        attacker.GetComponent<Attack>().canAttack = false;
+        CardInstance card = collision.GetComponent<CardInstance>();
 
-    }
-}
-
-private bool IsGrandChild(GameObject obj)
-{
-    // Check if the GameObject is a grandchild of the arrow trigger
-    Transform currentTransform = obj.transform;
-    while (currentTransform != null)
-    {
-        if (currentTransform.parent == transform.parent.parent)
+        // Check if the collision is with a card and not with the arrow trigger's descendants
+        if (card != null && !IsGrandChild(collision.gameObject) && card.tag == "Opponent")
         {
-            return true;
+            target = card;
+            battleManager.battlingCards[1]= target;
+            Debug.Log("Target: " + target.name);
         }
-        currentTransform = currentTransform.parent;
+        else if(!IsGrandChild(collision.gameObject) && collision.tag == "OpponentHero")
+        {
+            OpponentHealth enemyHealth = collision.GetComponent<OpponentHealth>();
+            enemyHealth.currentHealth -= attacker.card.attack;
+            attacker.GetComponent<Attack>().canAttack = false;
+        }
     }
-    return false;
-}
 
+    private bool IsGrandChild(GameObject obj)
+    {
+        // Check if the GameObject is a grandchild of the arrow trigger
+        Transform currentTransform = obj.transform;
+        while (currentTransform != null)
+        {
+            if (currentTransform.parent == transform.parent.parent)
+            {
+                return true;
+            }
+            currentTransform = currentTransform.parent;
+        }
+        return false;
+    }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -69,11 +67,8 @@ private bool IsGrandChild(GameObject obj)
 
     public void OnEndDrag(PointerEventData eventData)
     {
-         
-            targetsAcquired = true;
-            Destroy(gameObject);
+        targetsAcquired = true;
+        Destroy(gameObject);
         GetComponent<CanvasGroup>().blocksRaycasts = true;
-
-
     }
 }

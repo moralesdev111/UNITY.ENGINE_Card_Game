@@ -34,7 +34,6 @@ public class Attack : MonoBehaviour, IPointerClickHandler
         if (cardInstance.currentCardState == CardInstance.CardState.battlefield && turnActions.turnState.currentTurnState == TurnState.TurnStates.playerTurn && canAttack)
         {
             Instantiate(targetingSystemPrefab, eventData.pointerDrag.transform);
-            
         }
     }
 

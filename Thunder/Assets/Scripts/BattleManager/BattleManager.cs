@@ -30,8 +30,7 @@ public class BattleManager : MonoBehaviour
         defender.healthInstanceCurrentHealth -= attacker.card.attack;
         attacker.healthInstanceCurrentHealth-= defender.card.attack;
         attacker.GetComponent<Attack>().canAttack = false;
-        
-       
+
         ClearBattlingCards();
         canBattle = false;
     }
@@ -48,7 +47,6 @@ public class BattleManager : MonoBehaviour
     public bool CheckBattleReady()
     {
         return battlingCards[0] != null && battlingCards[1] != null;
-        
     }
 }
 
