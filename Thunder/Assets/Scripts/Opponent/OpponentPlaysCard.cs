@@ -24,15 +24,46 @@ public class OpponentPlaysCard : MonoBehaviour
         }
     }
 
+    IEnumerator SlowDownAI()
+    {
+        yield return new WaitForSeconds(2.5f);
+        PlayCard();
+    }
+
     private void PlayCard()
     {
         if (gameSettings.opponentCurrentMana > 0)
         {
-            SearchForCheapCard(opponentHand.CurrentSize);
+            SearchForFirstPlayableCard(opponentHand.CurrentSize);
         }
         else
         {
             return;
+        }
+    }
+
+    private void SearchForFirstPlayableCard(int amountOfChecks)
+    {
+        bool foundPlayableCard = false;
+        for (int i = 0; i < amountOfChecks; i++)
+        {
+            if (opponentHand.Container[i].manaCost <= gameSettings.opponentCurrentMana)
+            {
+                foundPlayableCard = true;
+                Card chosenCard = opponentHand.Container[i];
+                GameObject physicalCard = opponentHand.GetInstantiatedCards()[i];
+                UncoverCard(physicalCard);
+                physicalCard.transform.SetParent(opponentBattlefield);
+                
+                AssignCardInstance(chosenCard, physicalCard);
+                opponentHand.Container.Remove(chosenCard);
+                opponentHand.GetInstantiatedCards().Remove(physicalCard);
+                break;
+            }
+        }
+        if(!foundPlayableCard)
+        {
+            Debug.Log("No card is playable");
         }
     }
 
@@ -46,34 +77,5 @@ public class OpponentPlaysCard : MonoBehaviour
     {
         CardBack randomizedCardBack = physicalCard.GetComponent<CardBack>();
         randomizedCardBack.UncoverCard();
-    }
-
-    private void SearchForCheapCard(int amountOfChecks)
-    {
-        for (int i = 0; i < amountOfChecks; i++)
-        {
-            if (opponentHand.Container[i].manaCost <= gameSettings.opponentCurrentMana)
-            {
-                Card chosenCard = opponentHand.Container[i];
-                GameObject physicalCard = opponentHand.GetInstantiatedCards()[i];
-                UncoverCard(physicalCard);
-                physicalCard.transform.SetParent(opponentBattlefield);
-                
-                AssignCardInstance(chosenCard, physicalCard);
-                opponentHand.Container.Remove(chosenCard);
-                opponentHand.GetInstantiatedCards().Remove(physicalCard);
-                return;
-            }
-            else
-            {
-                Debug.Log("No cheap cards");
-            }
-        }
-    }
-
-    IEnumerator SlowDownAI()
-    {
-        yield return new WaitForSeconds(3f);
-        PlayCard();
     }
 }
