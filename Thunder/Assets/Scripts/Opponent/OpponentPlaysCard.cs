@@ -19,15 +19,9 @@ public class OpponentPlaysCard : MonoBehaviour
         }
         if (!hasPlayedCard && turnState.currentTurnState == TurnState.TurnStates.opponentTurn)
         {
-            StartCoroutine(SlowDownAI());
+            PlayCard();
             hasPlayedCard = true;
         }
-    }
-
-    IEnumerator SlowDownAI()
-    {
-        yield return new WaitForSeconds(2.5f);
-        PlayCard();
     }
 
     private void PlayCard()
