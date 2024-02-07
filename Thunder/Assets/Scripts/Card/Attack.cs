@@ -8,8 +8,9 @@ public class Attack : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] CardInstance cardInstance;
     [SerializeField] Image cardImage;
+    [SerializeField] GameObject targetingSystemPrefab;
     private TurnActions turnActions;
-    private EnemyHealth enemyHealth;
+    private OpponentHealth enemyHealth;
     public bool canAttack;
 
     private void OnEnable()
@@ -32,8 +33,8 @@ public class Attack : MonoBehaviour, IPointerClickHandler
     {
         if (cardInstance.currentCardState == CardInstance.CardState.battlefield && turnActions.turnState.currentTurnState == TurnState.TurnStates.playerTurn && canAttack)
         {
-            enemyHealth.currentHealth -= cardInstance.card.attack;
-            canAttack = false;
+            Instantiate(targetingSystemPrefab, eventData.pointerDrag.transform);
+            
         }
     }
 
@@ -59,6 +60,6 @@ public class Attack : MonoBehaviour, IPointerClickHandler
         canAttack = false;
         cardInstance = GetComponent<CardInstance>();
         turnActions = FindObjectOfType<TurnActions>();
-        enemyHealth = FindObjectOfType<EnemyHealth>();
+        enemyHealth = FindObjectOfType<OpponentHealth>();
     }
 }

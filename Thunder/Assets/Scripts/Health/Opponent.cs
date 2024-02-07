@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyHealth : MonoBehaviour
+public class OpponentHealth : MonoBehaviour
 {
     public float maxHealth = 10;
     public float currentHealth;

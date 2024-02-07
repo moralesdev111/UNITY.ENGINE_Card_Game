@@ -14,6 +14,8 @@ public class CardInstance : MonoBehaviour
     [SerializeField] TextMeshProUGUI manaCost;
     [SerializeField] TextMeshProUGUI attack;
     [SerializeField] TextMeshProUGUI health;
+    public int healthInstanceMaxHealth;
+    public int healthInstanceCurrentHealth;
     private bool isInitialized = false;
 
         public enum CardState
@@ -36,10 +38,22 @@ public class CardInstance : MonoBehaviour
         if (card != null)
         {
             SetCardUI();
+            healthInstanceMaxHealth = card.health;
+            healthInstanceCurrentHealth = healthInstanceMaxHealth;
             isInitialized = true;
         }
     }
 
+    private void Update()
+    {
+        health.text = card.health.ToString();
+        if(healthInstanceCurrentHealth < 1)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    
     private void SetInitialState()
     {
         currentCardState = CardState.deck;
@@ -57,6 +71,6 @@ public class CardInstance : MonoBehaviour
         cardBack.sprite = card.cardBack;
         manaCost.text = card.manaCost.ToString();
         attack.text = card.attack.ToString();
-        health.text = card.health.ToString();
+        health.text = healthInstanceCurrentHealth.ToString();
     }
 }
