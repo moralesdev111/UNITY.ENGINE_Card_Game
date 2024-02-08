@@ -2110,7 +2110,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBattlefield: {fileID: 1571123824}
   opponentBattlefield: {fileID: 1275386980}
-  opponentPlaysCard: {fileID: 632789374}
   playerHealth: {fileID: 35557630}
   readyToAttack: 0
   attackExecuted: 0

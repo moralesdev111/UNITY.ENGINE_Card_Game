@@ -32,7 +32,7 @@ public class OpponentPlaysCard : MonoBehaviour
     {
         if (gameSettings.opponentCurrentMana > 0)
         {
-            SearchForFirstPlayableCard(opponentHand.CurrentSize);
+            StartCoroutine(DelayAction());
         }
         else
         {
@@ -75,5 +75,11 @@ public class OpponentPlaysCard : MonoBehaviour
     {
         CardBack randomizedCardBack = physicalCard.GetComponent<CardBack>();
         randomizedCardBack.UncoverCard();
+    }
+
+    IEnumerator DelayAction()
+    {
+        yield return new WaitForSeconds(1.5f);
+        SearchForFirstPlayableCard(opponentHand.CurrentSize);
     }
 }

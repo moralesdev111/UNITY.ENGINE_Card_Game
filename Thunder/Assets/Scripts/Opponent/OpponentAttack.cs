@@ -7,6 +7,7 @@ public class OpponentAttack : MonoBehaviour
     [SerializeField] Transform playerBattlefield;
     [SerializeField] Transform opponentBattlefield;
     [SerializeField] PlayerHealth playerHealth;
+    
     public bool readyToAttack = false;
     public bool attackExecuted= false;
 
@@ -70,13 +71,13 @@ public class OpponentAttack : MonoBehaviour
 
     IEnumerator DelayAction()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3.5f);
         AttackHero();
     }
 
     IEnumerator DelayAction2()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3.5f);
         AttackCard();
     }
 
