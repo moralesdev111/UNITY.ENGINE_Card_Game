@@ -7,6 +7,8 @@ public class OpponentAttack : MonoBehaviour
     [SerializeField] Transform playerBattlefield;
     [SerializeField] Transform opponentBattlefield;
     [SerializeField] PlayerHealth playerHealth;
+    [SerializeField] TurnManager turnManager;
+
     
     public bool readyToAttack = false;
     public bool attackExecuted= false;
@@ -26,14 +28,20 @@ public class OpponentAttack : MonoBehaviour
                         StartCoroutine(DelayAction());
                         readyToAttack = false;
                         attackExecuted = true;
+                        StartCoroutine(DelayAction3());
                     }
                     else
                     {
                         StartCoroutine(DelayAction2());
                         readyToAttack = false;
                         attackExecuted = true;
+                        StartCoroutine(DelayAction3());
                     } 
                 }
+            }
+            else
+            {
+                StartCoroutine(DelayAction3());
             }
         }
     }
@@ -79,6 +87,16 @@ public class OpponentAttack : MonoBehaviour
     {
         yield return new WaitForSeconds(3.5f);
         AttackCard();
+    }
+
+    private void EndTurnManager()
+    {
+        turnManager.EndOpponentTurn();
+    }
+    IEnumerator DelayAction3()
+    {
+        yield return new WaitForSeconds(7f);
+        EndTurnManager();
     }
 
 }

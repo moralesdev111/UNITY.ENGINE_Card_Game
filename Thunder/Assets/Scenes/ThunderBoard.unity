@@ -2111,6 +2111,7 @@ MonoBehaviour:
   playerBattlefield: {fileID: 1571123824}
   opponentBattlefield: {fileID: 1275386980}
   playerHealth: {fileID: 35557630}
+  turnManager: {fileID: 1357867411}
   readyToAttack: 0
   attackExecuted: 0
 --- !u!1 &639208947
