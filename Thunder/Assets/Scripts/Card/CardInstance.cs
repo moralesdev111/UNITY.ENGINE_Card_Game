@@ -17,6 +17,8 @@ public class CardInstance : MonoBehaviour
     public int healthInstanceMaxHealth;
     public int healthInstanceCurrentHealth;
     private bool isInitialized = false;
+    private PlayerDeck playerDeck;
+    private OpponentDeck opponentDeck;
 
         public enum CardState
     {
@@ -29,6 +31,8 @@ public class CardInstance : MonoBehaviour
 
     private void Start()
     {
+        playerDeck = FindObjectOfType<PlayerDeck>();
+        opponentDeck = FindObjectOfType<OpponentDeck>();
         SetHierarchyName();
         SetInitialState();
         if (isInitialized)
@@ -72,5 +76,17 @@ public class CardInstance : MonoBehaviour
         manaCost.text = card.manaCost.ToString();
         attack.text = card.attack.ToString();
         health.text = healthInstanceCurrentHealth.ToString();
+    }
+
+    private void OnDestroy()
+    {
+        if(this.tag == "Opponent")
+        {
+            opponentDeck.RemoveCard(this.card);
+        }
+        else{
+            playerDeck.RemoveCard(this.card);
+        }
+        
     }
 }

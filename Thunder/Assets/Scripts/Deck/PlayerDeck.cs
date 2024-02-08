@@ -37,4 +37,12 @@ public class PlayerDeck : SlotContainer
             }
         }
     }
+
+    public void RemoveCard(Card card)
+    {
+        if (Container.Contains(card))
+        {
+            Container.Remove(card);
+        }
+    }
 }
