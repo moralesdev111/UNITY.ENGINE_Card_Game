@@ -8,6 +8,7 @@ public class OpponentPlaysCard : MonoBehaviour
     [SerializeField] OpponentHand opponentHand;
     [SerializeField] Transform opponentBattlefield;
     [SerializeField] OpponentAttack opponentAttack;
+    [SerializeField] TurnManager turnManager;
     private bool hasPlayedCard = false;
 
 
@@ -61,6 +62,7 @@ public class OpponentPlaysCard : MonoBehaviour
         }
         if(!foundPlayableCard)
         {
+            turnManager.EndOpponentTurn();
             Debug.Log("No card is playable");
         }
     }
