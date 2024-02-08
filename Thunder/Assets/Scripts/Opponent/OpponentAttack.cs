@@ -6,7 +6,6 @@ public class OpponentAttack : MonoBehaviour
 {
     [SerializeField] Transform playerBattlefield;
     [SerializeField] Transform opponentBattlefield;
-    [SerializeField] OpponentPlaysCard opponentPlaysCard;
     [SerializeField] PlayerHealth playerHealth;
     public bool readyToAttack = false;
     public bool attackExecuted= false;
@@ -32,8 +31,7 @@ public class OpponentAttack : MonoBehaviour
                         AttackCard();
                         readyToAttack = false;
                         attackExecuted = true;
-                    }
-                    
+                    } 
                 }
             }
         }
@@ -42,9 +40,7 @@ public class OpponentAttack : MonoBehaviour
     private void AttackHero()
     {
         Debug.Log("Attack Hero");
-
-        int randomIndex = UnityEngine.Random.Range(0, opponentBattlefield.childCount);
-        Transform selectedCard = opponentBattlefield.GetChild(randomIndex);
+        Transform selectedCard = ChooseRandomBattlefieldCard(opponentBattlefield);
 
         CardInstance cardInstance = selectedCard.GetComponent<CardInstance>();
 
@@ -54,5 +50,22 @@ public class OpponentAttack : MonoBehaviour
     private void AttackCard()
     {
         Debug.Log("Attack Card");
+
+        Transform selectedCard = ChooseRandomBattlefieldCard(opponentBattlefield);
+        CardInstance attackingCard = selectedCard.GetComponent<CardInstance>();
+
+        Transform selectedEnemyCard = ChooseRandomBattlefieldCard(playerBattlefield);
+        CardInstance defendingCard = selectedEnemyCard.GetComponent<CardInstance>();
+
+        defendingCard.healthInstanceCurrentHealth -= attackingCard.card.attack;
+        attackingCard.healthInstanceCurrentHealth -=  defendingCard.card.attack;
     }
+
+     private Transform ChooseRandomBattlefieldCard(Transform battlefieldOwner)
+    {
+        int randomIndex = UnityEngine.Random.Range(0, battlefieldOwner.childCount);
+        Transform selectedCard = battlefieldOwner.GetChild(randomIndex);
+        return selectedCard;
+    }
+
 }
