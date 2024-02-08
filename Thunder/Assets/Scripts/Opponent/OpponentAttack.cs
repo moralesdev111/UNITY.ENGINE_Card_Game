@@ -22,13 +22,13 @@ public class OpponentAttack : MonoBehaviour
                 {
                     if(playerBattlefield.childCount == 0)
                     {
-                        AttackHero();
+                        StartCoroutine(DelayAction());
                         readyToAttack = false;
                         attackExecuted = true;
                     }
                     else
                     {
-                        AttackCard();
+                        StartCoroutine(DelayAction2());
                         readyToAttack = false;
                         attackExecuted = true;
                     } 
@@ -66,6 +66,18 @@ public class OpponentAttack : MonoBehaviour
         int randomIndex = UnityEngine.Random.Range(0, battlefieldOwner.childCount);
         Transform selectedCard = battlefieldOwner.GetChild(randomIndex);
         return selectedCard;
+    }
+
+    IEnumerator DelayAction()
+    {
+        yield return new WaitForSeconds(2f);
+        AttackHero();
+    }
+
+    IEnumerator DelayAction2()
+    {
+        yield return new WaitForSeconds(2f);
+        AttackCard();
     }
 
 }
