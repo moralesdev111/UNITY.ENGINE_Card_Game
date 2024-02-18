@@ -8,7 +8,8 @@ public class BattleManager : MonoBehaviour
 {
     public CardInstance[] battlingCards;
     public bool canBattle = true;
-   
+   public Transform battlefieldParent;
+
 
     void Start()
     {

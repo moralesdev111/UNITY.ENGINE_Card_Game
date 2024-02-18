@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class OpponentAttack : MonoBehaviour
@@ -8,6 +9,8 @@ public class OpponentAttack : MonoBehaviour
     [SerializeField] Transform opponentBattlefield;
     [SerializeField] PlayerHealth playerHealth;
     [SerializeField] TurnManager turnManager;
+    [SerializeField] TextMeshProUGUI playerHealthText;
+    [SerializeField] AudioManager audioManager; 
 
     
     public bool readyToAttack = false;
@@ -48,16 +51,22 @@ public class OpponentAttack : MonoBehaviour
 
     private void AttackHero()
     {
+        audioManager.PlaySFX("attack");
+
         Debug.Log("Attack Hero");
         Transform selectedCard = ChooseRandomBattlefieldCard(opponentBattlefield);
 
         CardInstance cardInstance = selectedCard.GetComponent<CardInstance>();
 
         playerHealth.currentHealth -= cardInstance.card.attack;
+        playerHealthText.color = Color.red;
+        StartCoroutine(ChangeColorToBlack());
     }
 
     private void AttackCard()
     {
+        
+        audioManager.PlaySFX("attack");
         Debug.Log("Attack Card");
 
         Transform selectedCard = ChooseRandomBattlefieldCard(opponentBattlefield);
@@ -97,6 +106,12 @@ public class OpponentAttack : MonoBehaviour
     {
         yield return new WaitForSeconds(7f);
         EndTurnManager();
+    }
+
+    IEnumerator ChangeColorToBlack()
+    {
+        yield return new WaitForSeconds(1.5f);
+        playerHealthText.color = Color.black;
     }
 
 }
